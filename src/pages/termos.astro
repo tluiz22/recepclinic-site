@@ -1,20 +1,308 @@
 ---
-import Base from '../layouts/Base.astro';
+import Legal from '../layouts/Legal.astro';
+import { site, legalNameLabel, cnpjLabel } from '../config/site';
+
+const email = site.contact.email;
+
+const toc = [
+  { id: 'aceite', label: 'Quem somos e aceite destes termos' },
+  { id: 'objeto', label: 'O que é o serviço' },
+  { id: 'contratacao', label: 'Contratação, preço e contrato' },
+  { id: 'acesso', label: 'Contas de acesso ao painel' },
+  { id: 'clinica', label: 'Responsabilidades da clínica' },
+  { id: 'whatsapp', label: 'Uso do WhatsApp' },
+  { id: 'recepclinic', label: 'Responsabilidades do RecepClinic' },
+  { id: 'dados', label: 'Dados pessoais' },
+  { id: 'disponibilidade', label: 'Disponibilidade e manutenção' },
+  { id: 'suporte', label: 'Suporte' },
+  { id: 'limites', label: 'Limitações de responsabilidade' },
+  { id: 'propriedade', label: 'Propriedade intelectual' },
+  { id: 'encerramento', label: 'Suspensão e encerramento' },
+  { id: 'alteracoes', label: 'Alterações destes termos' },
+  { id: 'lei', label: 'Lei aplicável e foro' },
+  { id: 'contato', label: 'Contato' },
+];
 ---
 
-<Base title="Termos de uso" description="Condições de uso do RecepClinic.">
-  <section class="container placeholder">
-    <span class="eyebrow">Em construção</span>
-    <h1>Termos de uso</h1>
-    <p class="muted">Texto entra na etapa S4.</p>
+<Legal
+  title="Termos de uso"
+  description="Condições de uso do RecepClinic, o sistema de agendamento e atendimento pelo WhatsApp para clínicas: responsabilidades da clínica e do RecepClinic, uso do WhatsApp, dados, disponibilidade e encerramento."
+  updated="03/10/2026"
+  inReview={true}
+  toc={toc}
+>
+  <section id="aceite">
+    <h2>1. Quem somos e aceite destes termos</h2>
+    <p>
+      {site.name} é uma marca de {legalNameLabel}, CNPJ {cnpjLabel} (“{site.name}”, “nós”). Estes termos
+      regulam o uso do {site.name} pela clínica ou consultório que o contrata (“clínica”) e pelas
+      pessoas que a clínica autoriza a usar o painel (“usuários”).
+    </p>
+    <p>
+      Ao contratar o serviço ou usar o painel, a clínica e os usuários concordam com estes termos e com
+      a <a href="/privacidade">política de privacidade</a>. Quem aceita em nome da clínica declara ter
+      poderes para isso.
+    </p>
+    <p>
+      Os pacientes e as pessoas que conversam com a clínica pelo WhatsApp não precisam de conta nem
+      aceitam estes termos. A relação deles é com a clínica, que responde pelo uso do serviço no
+      atendimento a eles.
+    </p>
   </section>
-</Base>
 
-<style>
-  .placeholder {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-top: 56px;
-  }
-</style>
+  <section id="objeto">
+    <h2>2. O que é o serviço</h2>
+    <p>
+      O {site.name} é um sistema na internet, oferecido como serviço, para a clínica organizar a agenda
+      e atender pelo WhatsApp. Ele inclui:
+    </p>
+    <ul>
+      <li>
+        um assistente automático no número de WhatsApp da clínica, que oferece horários livres e permite
+        aos pacientes marcar, confirmar, remarcar e cancelar atendimentos;
+      </li>
+      <li>
+        mensagens automáticas de confirmação, lembrete, orientações de preparo, lista de espera e resumo
+        do dia para a equipe;
+      </li>
+      <li>
+        um painel para a equipe da clínica gerenciar agenda, disponibilidade, serviços, pacientes,
+        comparecimento e relatórios.
+      </li>
+    </ul>
+    <p>
+      O {site.name} <strong>não é prontuário eletrônico</strong>, não presta serviços de saúde e não dá
+      orientação médica. As informações clínicas, as decisões sobre o atendimento e a relação
+      profissional com o paciente são da clínica e dos seus profissionais.
+    </p>
+  </section>
+
+  <section id="contratacao">
+    <h2>3. Contratação, preço e contrato</h2>
+    <p>
+      Preço, forma de pagamento, prazo, implantação e eventuais custos de terceiros (como as tarifas da
+      Meta pelo envio de mensagens) são definidos na <strong>proposta comercial</strong> ou no
+      <strong>contrato</strong> com a clínica. Se houver diferença entre estes termos e o contrato, vale
+      o contrato.
+    </p>
+  </section>
+
+  <section id="acesso">
+    <h2>4. Contas de acesso ao painel</h2>
+    <ul>
+      <li>
+        A clínica indica quem administra a conta. O administrador convida as demais pessoas da equipe e
+        define o papel de cada uma (administração, profissional ou recepção).
+      </li>
+      <li>
+        Cada pessoa usa o próprio login. Login e senha são pessoais e não devem ser compartilhados.
+      </li>
+      <li>
+        A clínica deve retirar o acesso de quem deixar a equipe e nos avisar logo se suspeitar de uso
+        indevido de alguma conta.
+      </li>
+      <li>A clínica responde pelo que for feito no painel com os logins da sua equipe.</li>
+    </ul>
+  </section>
+
+  <section id="clinica">
+    <h2>5. Responsabilidades da clínica</h2>
+    <p>A clínica se compromete a:</p>
+    <ul>
+      <li>
+        manter corretas as informações que cadastra: horários, locais, serviços, durações, valores,
+        orientações de preparo e regras de atendimento;
+      </li>
+      <li>
+        acompanhar a agenda e conferir as marcações, sobretudo nos primeiros dias de uso e após mudanças
+        de configuração;
+      </li>
+      <li>
+        como <strong>controladora dos dados</strong> de pacientes e contatos, ter base legal para
+        tratá-los, informar os pacientes sobre o uso do sistema e atender aos pedidos deles, conforme a
+        LGPD;
+      </li>
+      <li>cuidar dos dados de crianças e adolescentes no melhor interesse deles;</li>
+      <li>usar o WhatsApp conforme a seção 6;</li>
+      <li>
+        não usar o serviço para fins ilegais, para enviar mensagens enganosas ou não solicitadas, nem
+        para tratar dados que não sejam necessários ao agendamento;
+      </li>
+      <li>não tentar burlar a segurança do sistema nem acessar dados de outras clínicas.</li>
+    </ul>
+  </section>
+
+  <section id="whatsapp">
+    <h2>6. Uso do WhatsApp</h2>
+    <p>
+      O assistente funciona no número de WhatsApp da própria clínica, conectado à plataforma oficial do
+      WhatsApp Business, da Meta. Por isso:
+    </p>
+    <ul>
+      <li>
+        a clínica deve seguir os <a
+          href="https://www.whatsapp.com/legal/business-terms"
+          rel="noopener">termos do WhatsApp Business</a
+        > e a <a href="https://business.whatsapp.com/policy" rel="noopener"
+          >política comercial do WhatsApp</a
+        >,
+        incluindo só enviar mensagens a quem forneceu o número e aceitou receber mensagens da clínica;
+      </li>
+      <li>
+        a conta, o número e a verificação junto à Meta são da clínica. Os textos das mensagens
+        automáticas passam por aprovação da Meta antes de serem usados;
+      </li>
+      <li>
+        a Meta pode limitar, suspender ou bloquear números e mensagens pelas regras dela. O {site.name} não controla essas decisões e não responde por elas, mas ajuda a clínica a
+        entender e resolver o problema quando possível;
+      </li>
+      <li>
+        a entrega das mensagens depende da Meta, da conexão e do aparelho do destinatário. Uma mensagem
+        enviada pelo sistema pode não chegar ou chegar com atraso;
+      </li>
+      <li>
+        a equipe da clínica pode continuar atendendo pelo aplicativo do WhatsApp Business no mesmo
+        número. Quando alguém da equipe responde uma conversa, o assistente pausa naquela conversa.
+      </li>
+    </ul>
+  </section>
+
+  <section id="recepclinic">
+    <h2>7. Responsabilidades do RecepClinic</h2>
+    <p>Nós nos comprometemos a:</p>
+    <ul>
+      <li>prestar o serviço como descrito nestes termos e no contrato;</li>
+      <li>
+        tratar os dados de pacientes e contatos só em nome da clínica, conforme as instruções dela e a
+        LGPD;
+      </li>
+      <li>manter os dados de cada clínica separados e protegidos, como descrito na política de privacidade;</li>
+      <li>avisar a clínica sobre incidentes de segurança que possam afetá-la;</li>
+      <li>avisar com antecedência mudanças relevantes no serviço;</li>
+      <li>ajudar na implantação e no uso, nas condições do contrato.</li>
+    </ul>
+  </section>
+
+  <section id="dados">
+    <h2>8. Dados pessoais</h2>
+    <p>
+      No tratamento dos dados de pacientes e contatos, a clínica é a <strong>controladora</strong> e o {site.name} é o <strong>operador</strong>. Os detalhes estão na <a href="/privacidade"
+        >política de privacidade</a
+      >, e o contrato pode trazer um acordo específico
+      de tratamento de dados.
+    </p>
+    <p>
+      Os dados cadastrados e gerados pela clínica pertencem a ela. A clínica pode pedir a exportação
+      dos seus dados durante o contrato e ao final dele.
+    </p>
+  </section>
+
+  <section id="disponibilidade">
+    <h2>9. Disponibilidade e manutenção</h2>
+    <ul>
+      <li>
+        Trabalhamos para manter o serviço disponível de forma contínua, mas ele pode ficar
+        indisponível por manutenção, atualização ou falhas, inclusive de fornecedores como a Meta e os
+        serviços de hospedagem.
+      </li>
+      <li>
+        Manutenções programadas são feitas, sempre que possível, fora do horário de atendimento das
+        clínicas e avisadas com antecedência.
+      </li>
+      <li>
+        O serviço é atualizado com frequência. Funções podem ser melhoradas, mudadas ou substituídas,
+        sem retirar o essencial do que foi contratado.
+      </li>
+      <li>Níveis de disponibilidade com metas específicas, se houver, constam do contrato.</li>
+    </ul>
+  </section>
+
+  <section id="suporte">
+    <h2>10. Suporte</h2>
+    <p>
+      O suporte é feito pelo e-mail <a href={`mailto:${email}`}>{email}</a> e pelo WhatsApp informado à
+      clínica na contratação. Canais, horários e prazos de atendimento seguem o contrato.
+    </p>
+    <p>
+      Para resolver um problema, nossa equipe pode precisar acessar os dados da clínica no sistema. Esse
+      acesso é feito só para o suporte e fica registrado.
+    </p>
+  </section>
+
+  <section id="limites">
+    <h2>11. Limitações de responsabilidade</h2>
+    <p>O {site.name} não responde por:</p>
+    <ul>
+      <li>decisões clínicas, atendimentos e a relação entre a clínica e os seus pacientes;</li>
+      <li>informações incorretas cadastradas pela clínica ou fornecidas pelos pacientes;</li>
+      <li>faltas de pacientes, mesmo com lembrete enviado;</li>
+      <li>
+        falhas, bloqueios ou mudanças de regras do WhatsApp e da Meta, e falhas de internet, de aparelhos
+        ou de serviços de terceiros fora do nosso controle;
+      </li>
+      <li>uso do serviço pela clínica em desacordo com estes termos ou com a lei;</li>
+      <li>danos indiretos, como lucros cessantes ou perda de oportunidade.</li>
+    </ul>
+    <p>
+      Eventuais limites de valor da responsabilidade de cada parte constam do contrato. Nada nestes
+      termos afasta responsabilidades que a lei não permite excluir.
+    </p>
+  </section>
+
+  <section id="propriedade">
+    <h2>12. Propriedade intelectual</h2>
+    <p>
+      O sistema, a marca {site.name}, os textos padrão das mensagens e o restante do serviço pertencem ao {site.name}. A clínica recebe o direito de usá-lo enquanto durar o contrato, sem poder copiar,
+      revender ou tentar obter o código do sistema.
+    </p>
+    <p>
+      O nome, a marca, o logo e os textos próprios da clínica continuam sendo dela. A clínica nos
+      autoriza a usá-los só para prestar o serviço (por exemplo, nas mensagens e nas páginas de
+      agendamento).
+    </p>
+  </section>
+
+  <section id="encerramento">
+    <h2>13. Suspensão e encerramento</h2>
+    <ul>
+      <li>A clínica pode encerrar o uso do serviço nas condições do contrato.</li>
+      <li>
+        Podemos suspender o acesso, com aviso prévio sempre que possível, se a clínica descumprir estes
+        termos, usar o serviço de forma que coloque em risco outras clínicas, pacientes ou o número de
+        WhatsApp, ou por falta de pagamento nas condições do contrato.
+      </li>
+      <li>
+        Ao fim do contrato, a clínica pode pedir a exportação dos seus dados. Depois disso, os dados são
+        devolvidos ou excluídos conforme a <a href="/privacidade">política de privacidade</a> e o
+        contrato, salvo o que a lei obrigar a guardar.
+      </li>
+      <li>
+        O número de WhatsApp continua sendo da clínica. Ao fim do contrato, desconectamos o {site.name} do número, que segue funcionando no aplicativo do WhatsApp Business.
+      </li>
+    </ul>
+  </section>
+
+  <section id="alteracoes">
+    <h2>14. Alterações destes termos</h2>
+    <p>
+      Podemos atualizar estes termos para acompanhar mudanças no serviço ou na lei. A data da versão fica
+      sempre no topo da página. Mudanças relevantes são avisadas às clínicas antes de valerem. Se a
+      clínica não concordar, pode encerrar o uso nas condições do contrato.
+    </p>
+  </section>
+
+  <section id="lei">
+    <h2>15. Lei aplicável e foro</h2>
+    <p>
+      Estes termos seguem as leis do Brasil. Fica eleito o foro da comarca da sede de {legalNameLabel}
+      para resolver questões sobre eles, salvo se o contrato indicar outro.
+    </p>
+  </section>
+
+  <section id="contato">
+    <h2>16. Contato</h2>
+    <p>
+      Dúvidas sobre estes termos: <a href={`mailto:${email}`}>{email}</a>.
+    </p>
+  </section>
+</Legal>

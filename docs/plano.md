@@ -102,9 +102,9 @@
 
 ### S3 — Política de privacidade (versão em revisão)
 
-> **Status (03/out/2026):** texto publicado em `/privacidade` (16 seções), layout comum das páginas
-> legais em `src/layouts/Legal.astro` (selo de revisão, data da versão, índice); aguardando a leitura
-> do cliente. Descreve o produto **no modelo alvo** (dados separados por clínica, D1; acesso do
+> **Status:** concluída e validada pelo cliente em 03/out/2026. Texto em `/privacidade` (16 seções),
+> layout comum das páginas legais em `src/layouts/Legal.astro` (selo de revisão, data da versão,
+> índice). Descreve o produto **no modelo alvo** (dados separados por clínica, D1; acesso do
 > suporte registrado, D6), que precisa estar pronto antes do 1º piloto. Retenção sem prazos em
 > número (devolução ou exclusão conforme contrato): prazos ficam para a revisão do advogado.
 
@@ -117,6 +117,11 @@
 - **Validar:** leitura do cliente; URL estável para a Meta (`/privacidade`).
 
 ### S4 — Termos de uso (versão em revisão)
+
+> **Status (03/out/2026):** texto publicado em `/termos` (16 seções), no mesmo layout da política;
+> aguardando a leitura do cliente. Preço, prazos, SLA, horário de suporte e limite de valor da
+> responsabilidade **remetidos à proposta comercial e ao contrato** (sem números nos termos). Foro:
+> comarca da sede da empresa, salvo outro no contrato.
 
 - Objeto do serviço, responsabilidades da clínica (dados dos pacientes, uso do WhatsApp conforme
   as regras da Meta) e do RecepClinic, disponibilidade, suporte, limitações, encerramento, foro.
