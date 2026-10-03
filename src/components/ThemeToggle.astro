@@ -1,0 +1,75 @@
+---
+// Alterna entre claro e escuro. Sem escolha salva, o site segue o tema do aparelho.
+---
+
+<button type="button" class="theme-toggle" data-theme-toggle aria-label="Alternar tema claro/escuro">
+  <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2" />
+    <path
+      d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path
+      d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+  }
+  /* Mostra o ícone do tema para o qual o botão leva. */
+  .icon-sun {
+    display: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .icon-sun {
+      display: block;
+    }
+    :global(:root:not([data-theme='light'])) .icon-moon {
+      display: none;
+    }
+  }
+  :global(:root[data-theme='dark']) .icon-sun {
+    display: block;
+  }
+  :global(:root[data-theme='dark']) .icon-moon {
+    display: none;
+  }
+</style>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  button?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const current =
+      root.dataset.theme ??
+      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+</script>

@@ -1,0 +1,83 @@
+---
+import { site, legalNameLabel, cnpjLabel, whatsappUrl } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container cols">
+    <div class="col">
+      <span class="eyebrow">Contato</span>
+      <ul>
+        {
+          whatsappUrl && (
+            <li>
+              <a href={whatsappUrl} rel="noopener">
+                WhatsApp
+              </a>
+            </li>
+          )
+        }
+        <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <span class="eyebrow">Legal</span>
+      <ul>
+        <li><a href="/privacidade">Política de privacidade</a></li>
+        <li><a href="/termos">Termos de uso</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container company">
+    <p class="muted">
+      {site.name} é uma marca de {legalNameLabel} · CNPJ {cnpjLabel}
+    </p>
+    <p class="muted">© {year} {site.name}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 72px;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    font-size: 0.95rem;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 36px 24px;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  a {
+    overflow-wrap: anywhere;
+  }
+  .company {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-block: 20px 32px;
+    border-top: 1px solid var(--line);
+    font-size: 0.88rem;
+  }
+  @media (min-width: 561px) {
+    .cols {
+      grid-template-columns: repeat(2, minmax(0, 220px));
+      gap: 48px;
+    }
+  }
+</style>

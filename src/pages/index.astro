@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+---
+
+<Base description="RecepClinic: agenda e atendimento pelo WhatsApp para clínicas. Pacientes marcam, confirmam e remarcam sozinhos.">
+  <section class="container placeholder">
+    <span class="eyebrow">Em construção</span>
+    <h1>{site.name} — {site.tagline.toLowerCase()}</h1>
+    <p class="muted">Conteúdo da página inicial entra na etapa S2.</p>
+  </section>
+</Base>
+
+<style>
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 56px;
+  }
+</style>

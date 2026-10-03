@@ -1,0 +1,40 @@
+---
+// Logo provisório: ícone simples (balão de conversa com marca de confirmação) + nome.
+import { site } from '../config/site';
+---
+
+<a href="/" class="logo" aria-label={`${site.name}, página inicial`}>
+  <svg class="logo-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <rect x="2" y="3" width="28" height="22" rx="8" fill="var(--accent)" />
+    <path d="M9 25 L9 30 L15 25 Z" fill="var(--accent)" />
+    <path
+      d="M10 14.5 L14 18.5 L22 10.5"
+      fill="none"
+      stroke="var(--accent-ink)"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+  <span class="logo-name">Recep<span>Clinic</span></span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .logo-icon {
+    flex: none;
+  }
+  .logo-name {
+    font: 700 1.25rem/1 var(--display);
+    letter-spacing: -0.02em;
+  }
+  .logo-name span {
+    color: var(--accent);
+  }
+</style>
