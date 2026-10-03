@@ -9,7 +9,7 @@ export const site = {
   contact: {
     email: 'contato@recepclinic.com.br',
     // Número com DDI e DDD, só dígitos (ex.: '5511999999999'). Informado pelo cliente na S2.
-    whatsapp: null as string | null,
+    whatsapp: '5561998645490' as string | null,
   },
 
   company: {
@@ -22,6 +22,8 @@ export const site = {
 export const legalNameLabel = site.company.legalName ?? '[razão social]';
 export const cnpjLabel = site.company.cnpj ?? 'em abertura';
 
+const whatsappGreeting = 'Olá! Quero conhecer o RecepClinic.';
+
 export const whatsappUrl = site.contact.whatsapp
-  ? `https://wa.me/${site.contact.whatsapp}`
+  ? `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(whatsappGreeting)}`
   : null;

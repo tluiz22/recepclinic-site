@@ -12,7 +12,11 @@
   --accent-soft: #dcefe8;
   --warm: #a8571f;
   --warm-soft: #f6e6da;
+  --chat: #e7efe9;
+  --bubble: #ffffff;
+  --bubble-me: #d4f0e3;
 
+  --mono: ui-monospace, 'SF Mono', Menlo, monospace;
   --display: 'Bricolage Grotesque Variable', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
   --body: 'Source Sans 3 Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
@@ -33,6 +37,9 @@
     --accent-soft: #173a31;
     --warm: #e39a62;
     --warm-soft: #33241a;
+    --chat: #101c19;
+    --bubble: #1b2a26;
+    --bubble-me: #1c4236;
   }
 }
 
@@ -48,6 +55,9 @@
   --accent-soft: #173a31;
   --warm: #e39a62;
   --warm-soft: #33241a;
+  --chat: #101c19;
+  --bubble: #1b2a26;
+  --bubble-me: #1c4236;
 }
 
 *,

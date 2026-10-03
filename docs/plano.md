@@ -76,7 +76,7 @@
 
 ### S1 — Projeto e estrutura
 
-> **Status (03/out/2026):** implementada, aguardando validação do cliente. Astro 7 estático; fontes
+> **Status:** concluída e validada pelo cliente em 03/out/2026. Astro 7 estático; fontes
 > servidas pelo próprio site (pacotes Fontsource, sem Google Fonts, para não expor o IP do
 > visitante a terceiros); dados da empresa e contato em `src/config/site.ts`; páginas `/`,
 > `/privacidade` e `/termos` provisórias; CI em `.github/workflows/ci.yml`.
@@ -90,6 +90,10 @@
 - **Validar:** `npm run dev` abre o esqueleto; `npm run build` sem erro.
 
 ### S2 — Página Início
+
+> **Status (03/out/2026):** página implementada (texto adaptado da proposta de valor, exemplo de
+> lembrete, seção "nasceu num consultório pediátrico", contato no fim com âncora `#contato`);
+> WhatsApp (61) 99864-5490 no botão de contato e no rodapé; aguardando a leitura do cliente.
 
 - Adaptação da proposta de valor conforme "Base de conteúdo".
 - Contato: botão de WhatsApp (número pessoal, informado pelo cliente nesta etapa) e

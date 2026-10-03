@@ -1,21 +1,543 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../config/site';
+import { site, whatsappUrl } from '../config/site';
 ---
 
-<Base description="RecepClinic: agenda e atendimento pelo WhatsApp para clínicas. Pacientes marcam, confirmam e remarcam sozinhos.">
-  <section class="container placeholder">
-    <span class="eyebrow">Em construção</span>
-    <h1>{site.name} — {site.tagline.toLowerCase()}</h1>
-    <p class="muted">Conteúdo da página inicial entra na etapa S2.</p>
-  </section>
+<Base description="RecepClinic: os pacientes marcam, confirmam e remarcam sozinhos no WhatsApp que a clínica já usa. A recepção continua no mesmo aplicativo e só entra quando precisa.">
+  <div class="container page">
+    <header class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">{site.tagline}</span>
+        <h1>Seus pacientes marcam, confirmam e remarcam sozinhos, no WhatsApp que a clínica já usa.</h1>
+        <p class="lede">
+          Um assistente atende pelo número da recepção, oferece os horários livres da agenda e manda o
+          lembrete na véspera com botões de confirmação. A recepção continua no mesmo aplicativo e só
+          entra quando precisa.
+        </p>
+        <ul class="hero-points">
+          <li>Sem aplicativo novo para o paciente</li>
+          <li>Mesmo número de sempre</li>
+          <li>Funciona fora do horário comercial</li>
+        </ul>
+        <div class="actions">
+          <a class="button" href="#contato">Pedir uma demonstração</a>
+        </div>
+      </div>
+
+      <figure class="chat" aria-label="Exemplo de lembrete enviado ao paciente pelo WhatsApp">
+        <div class="chat-top">
+          <div class="avatar" aria-hidden="true">CE</div>
+          <div><strong>Clínica Exemplo</strong><span>conta comercial</span></div>
+        </div>
+        <div class="bubble">
+          Olá! Lembrete: <strong>consulta de Maria</strong> amanhã, quinta-feira (01/10), às
+          <span class="mono">10h30</span>, na clínica. Pode confirmar a presença?
+          <time>18:02</time>
+        </div>
+        <div class="buttons" aria-hidden="true">
+          <span class="tapped">Confirmar presença</span>
+          <span>Remarcar</span>
+          <span>Cancelar</span>
+        </div>
+        <div class="bubble me">Confirmar presença<time>18:15</time></div>
+        <div class="bubble">Presença confirmada ✓ Até amanhã!<time>18:15</time></div>
+      </figure>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">O que pesa hoje</span>
+        <h2>O WhatsApp virou a recepção da clínica, e ela não fecha.</h2>
+      </div>
+      <div class="problems">
+        <div class="problem">
+          <h3>Recepção presa no celular</h3>
+          <p>
+            Boa parte do dia vai em perguntar nome, data de nascimento e horário preferido, uma conversa
+            de cada vez.
+          </p>
+        </div>
+        <div class="problem">
+          <h3>Faltas sem aviso</h3>
+          <p>O paciente esquece, o horário fica vazio e quem estava esperando vaga não fica sabendo.</p>
+        </div>
+        <div class="problem">
+          <h3>Pedidos fora de hora</h3>
+          <p>
+            Mensagens chegam à noite e no fim de semana. Quem não recebe resposta procura outro lugar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">O que o RecepClinic faz</span>
+        <h2>Cada pessoa da clínica ganha a parte que lhe toca.</h2>
+      </div>
+      <div class="roles">
+        <div class="role">
+          <h3>Para o paciente</h3>
+          <ul>
+            <li>Marca consulta, retorno ou exame pelo WhatsApp, a qualquer hora.</li>
+            <li>Recebe confirmação com data, local e endereço.</li>
+            <li>Lembrete na véspera com Confirmar, Remarcar e Cancelar.</li>
+            <li>Orientações de preparo enviadas automaticamente.</li>
+          </ul>
+        </div>
+        <div class="role">
+          <h3>Para a recepção</h3>
+          <ul>
+            <li>Continua atendendo pelo app do WhatsApp, no mesmo número.</li>
+            <li>Agenda do dia com quem confirmou presença.</li>
+            <li>Cancelamento de um dia inteiro com aviso e link de remarcação para cada paciente.</li>
+            <li>Bloqueio de agenda para férias e imprevistos.</li>
+          </ul>
+        </div>
+        <div class="role">
+          <h3>Para o profissional</h3>
+          <ul>
+            <li>Resumo do dia no WhatsApp antes do primeiro atendimento.</li>
+            <li>Registro de comparecimento e taxa de faltas por mês.</li>
+            <li>Histórico de quem marcou, remarcou ou cancelou, e quando.</li>
+            <li>Quantos agendamentos o assistente resolveu sozinho.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Nasceu num consultório pediátrico</span>
+        <h2>Regras que vieram da rotina real, não de um sistema genérico adaptado.</h2>
+        <p class="muted">
+          O RecepClinic começou atendendo famílias num consultório de pediatria, onde uma conversa
+          raramente é simples. Essas regras valem para qualquer clínica.
+        </p>
+      </div>
+      <div class="origin">
+        <div class="origin-item">
+          <h3>Um contato, vários pacientes</h3>
+          <p>
+            Pais, filhos ou cuidadores: o assistente pergunta quem será atendido, sem confundir pessoas
+            nem duplicar cadastro.
+          </p>
+        </div>
+        <div class="origin-item">
+          <h3>Convênios com muitos pacientes</h3>
+          <p>
+            Um mesmo número pode marcar para dezenas de pacientes, como nas parcerias com prefeituras.
+          </p>
+        </div>
+        <div class="origin-item">
+          <h3>Retorno dentro do prazo</h3>
+          <p>
+            O retorno fica ligado à consulta de origem e só é oferecido enquanto está no prazo definido
+            pela clínica.
+          </p>
+        </div>
+        <div class="origin-item">
+          <h3>Atendimentos em turma, com vagas</h3>
+          <p>
+            Exames e procedimentos podem ter horário fixo e limite de vagas, com o preparo enviado a cada
+            paciente.
+          </p>
+        </div>
+        <div class="origin-item">
+          <h3>Atendimento domiciliar</h3>
+          <p>O endereço da visita entra na confirmação, no lembrete e no resumo do dia.</p>
+        </div>
+        <div class="origin-item">
+          <h3>Regras de idade</h3>
+          <p>
+            Cada atendimento pode ter faixa etária própria, como consulta só até certa idade e exame
+            também para adultos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Convive com o que você já usa</span>
+        <h2>Não pede para a clínica trocar o que já funciona.</h2>
+      </div>
+      <div class="fit">
+        <div class="fit-box yes">
+          <h3>O que o RecepClinic cuida</h3>
+          <ul>
+            <li>Agenda, horários livres e bloqueios.</li>
+            <li>Conversa de agendamento no WhatsApp.</li>
+            <li>Confirmação, lembrete e orientações de preparo.</li>
+            <li>Comparecimento, faltas e histórico de cada atendimento.</li>
+          </ul>
+        </div>
+        <div class="fit-box no">
+          <h3>O que continua onde está</h3>
+          <ul>
+            <li>Prontuário e anotações clínicas, no sistema que a clínica já usa.</li>
+            <li>Cobrança e recibos, do jeito que a clínica já faz.</li>
+            <li>Plataformas de busca de profissionais, se a clínica as usa para atrair pacientes novos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Implantação</span>
+        <h2>Do primeiro contato ao assistente atendendo.</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Configuração da agenda</h3>
+          <p class="muted">
+            Dias, horários, locais, duração, tipos de atendimento e as regras de retorno da clínica.
+          </p>
+        </li>
+        <li>
+          <h3>Mensagens aprovadas</h3>
+          <p class="muted">Textos de confirmação e lembrete aprovados pelo WhatsApp oficial (Meta).</p>
+        </li>
+        <li>
+          <h3>Número ativado</h3>
+          <p class="muted">
+            O assistente passa a responder no número da clínica, que continua no app da recepção.
+          </p>
+        </li>
+        <li>
+          <h3>Treinamento</h3>
+          <p class="muted">Uma sessão com a equipe e acompanhamento nas primeiras semanas.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="closing" id="contato">
+      <h2>Quer ver funcionando com a sua agenda?</h2>
+      <p>
+        Mostramos em 20 minutos como o paciente marca, como o lembrete chega e o que a equipe vê no fim
+        do dia.
+      </p>
+      <div class="actions">
+        {
+          whatsappUrl && (
+            <a class="button invert" href={whatsappUrl} rel="noopener">
+              Conversar no WhatsApp
+            </a>
+          )
+        }
+        <a class={whatsappUrl ? 'button outline' : 'button invert'} href={`mailto:${site.contact.email}`}>
+          {site.contact.email}
+        </a>
+      </div>
+    </section>
+  </div>
 </Base>
 
 <style>
-  .placeholder {
+  .page {
     display: flex;
     flex-direction: column;
+    gap: 56px;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    scroll-margin-top: 24px;
+  }
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .lede {
+    font-size: 1.12rem;
+    color: var(--muted);
+  }
+  .mono {
+    font-family: var(--mono);
+    font-size: 0.92em;
+  }
+
+  /* Botões */
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .button:hover {
+    filter: brightness(1.08);
+  }
+  .button.invert {
+    background: var(--accent-ink);
+    color: var(--accent);
+  }
+  .button.outline {
+    background: transparent;
+    color: inherit;
+    border: 1.5px solid currentColor;
+  }
+
+  /* Abertura */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+    padding-top: 36px;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 4px 0 0;
+    list-style: none;
+  }
+  .hero-points li {
+    font-size: 0.92rem;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+  }
+
+  /* Exemplo de conversa */
+  .chat {
+    margin: 0;
+    background: var(--chat);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 18px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 18px 40px -24px rgba(18, 48, 42, 0.45);
+  }
+  .chat-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    display: grid;
+    place-items: center;
+    font: 700 0.85rem/1 var(--display);
+  }
+  .chat-top strong {
+    font-size: 0.95rem;
+    display: block;
+    line-height: 1.2;
+  }
+  .chat-top span {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .bubble {
+    background: var(--bubble);
+    border-radius: 4px 14px 14px 14px;
+    padding: 10px 12px 6px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    max-width: 92%;
+  }
+  .bubble time {
+    display: block;
+    text-align: right;
+    font: 500 0.7rem/1.6 var(--mono);
+    color: var(--muted);
+  }
+  .bubble.me {
+    align-self: flex-end;
+    background: var(--bubble-me);
+    border-radius: 14px 4px 14px 14px;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 92%;
+  }
+  .buttons span {
+    background: var(--bubble);
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .buttons span.tapped {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  /* Problemas */
+  .problems,
+  .roles {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 16px;
-    padding-top: 56px;
+  }
+  .problem {
+    background: var(--warm-soft);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .problem h3 {
+    color: var(--warm);
+  }
+
+  /* Papéis */
+  .role {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .role ul,
+  .fit-box ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .role ul {
+    font-size: 0.97rem;
+  }
+  .role li::marker {
+    color: var(--accent);
+  }
+
+  /* Origem */
+  .origin {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 40px;
+  }
+  .origin-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Convivência */
+  .fit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .fit-box {
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fit-box.yes {
+    background: var(--accent-soft);
+  }
+  .fit-box.no {
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+
+  /* Implantação */
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 14px;
+    border-top: 2px solid var(--accent);
+  }
+  .steps li::before {
+    content: 'Passo ' counter(step);
+    font: 500 0.78rem/1 var(--mono);
+    color: var(--accent);
+  }
+
+  /* Contato */
+  .closing {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-radius: 20px;
+    padding: 32px clamp(20px, 4vw, 44px);
+    gap: 14px;
+  }
+  .closing p {
+    opacity: 0.92;
+  }
+  .closing .actions {
+    margin-top: 8px;
+  }
+
+  @media (min-width: 561px) {
+    .page {
+      gap: 72px;
+    }
+    .origin,
+    .fit,
+    .steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 861px) {
+    .hero {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 48px;
+      padding-top: 56px;
+    }
+    .problems,
+    .roles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
   }
 </style>
