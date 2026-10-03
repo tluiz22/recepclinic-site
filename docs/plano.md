@@ -102,6 +102,12 @@
 
 ### S3 — Política de privacidade (versão em revisão)
 
+> **Status (03/out/2026):** texto publicado em `/privacidade` (16 seções), layout comum das páginas
+> legais em `src/layouts/Legal.astro` (selo de revisão, data da versão, índice); aguardando a leitura
+> do cliente. Descreve o produto **no modelo alvo** (dados separados por clínica, D1; acesso do
+> suporte registrado, D6), que precisa estar pronto antes do 1º piloto. Retenção sem prazos em
+> número (devolução ou exclusão conforme contrato): prazos ficam para a revisão do advogado.
+
 - Papéis: RecepClinic controlador (visitantes do site, usuários do painel) e **operador** dos dados
   de pacientes e contatos, cuja **controladora é a clínica**.
 - Dados tratados, finalidades e bases legais; WhatsApp/Meta; suboperadores (Meta, Supabase,

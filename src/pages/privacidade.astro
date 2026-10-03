@@ -1,20 +1,409 @@
 ---
-import Base from '../layouts/Base.astro';
+import Legal from '../layouts/Legal.astro';
+import { site, legalNameLabel, cnpjLabel } from '../config/site';
+
+const email = site.contact.email;
+
+const toc = [
+  { id: 'quem-somos', label: 'Quem somos e a quem esta política se aplica' },
+  { id: 'papeis', label: 'Nosso papel: controlador ou operador' },
+  { id: 'site', label: 'Visitantes deste site' },
+  { id: 'contato', label: 'Quem entra em contato conosco' },
+  { id: 'painel', label: 'Usuários do painel das clínicas' },
+  { id: 'pacientes', label: 'Pacientes e contatos das clínicas' },
+  { id: 'saude-criancas', label: 'Dados de saúde e de crianças e adolescentes' },
+  { id: 'whatsapp', label: 'WhatsApp e Meta' },
+  { id: 'compartilhamento', label: 'Com quem compartilhamos dados' },
+  { id: 'onde', label: 'Onde os dados ficam' },
+  { id: 'retencao', label: 'Por quanto tempo guardamos os dados' },
+  { id: 'seguranca', label: 'Segurança' },
+  { id: 'direitos', label: 'Seus direitos e como exercê-los' },
+  { id: 'exclusao', label: 'Como pedir a exclusão dos seus dados' },
+  { id: 'encarregado', label: 'Encarregado e contato' },
+  { id: 'alteracoes', label: 'Alterações desta política' },
+];
 ---
 
-<Base title="Política de privacidade" description="Como o RecepClinic trata dados pessoais.">
-  <section class="container placeholder">
-    <span class="eyebrow">Em construção</span>
-    <h1>Política de privacidade</h1>
-    <p class="muted">Texto entra na etapa S3.</p>
+<Legal
+  title="Política de privacidade"
+  description="Como o RecepClinic trata dados pessoais de visitantes do site, de usuários do painel e de pacientes e contatos das clínicas, conforme a LGPD."
+  updated="03/10/2026"
+  inReview={true}
+  toc={toc}
+>
+  <section id="quem-somos">
+    <h2>1. Quem somos e a quem esta política se aplica</h2>
+    <p>
+      O {site.name} é um sistema de agendamento e atendimento pelo WhatsApp para clínicas e
+      consultórios. Com ele, os pacientes marcam, confirmam, remarcam e cancelam atendimentos pelo
+      WhatsApp da clínica, e a equipe acompanha a agenda num painel na internet.
+    </p>
+    <p>
+      {site.name} é uma marca de {legalNameLabel}, CNPJ {cnpjLabel} (“{site.name}”, “nós”). Esta
+      política explica quais dados pessoais tratamos, para quê, com quem os compartilhamos e como você
+      exerce seus direitos, conforme a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018,
+      “LGPD”).
+    </p>
+    <p>Ela se aplica a quatro grupos de pessoas:</p>
+    <ul>
+      <li>quem visita este site ({site.url.replace('https://', '')});</li>
+      <li>quem entra em contato conosco por WhatsApp ou e-mail;</li>
+      <li>as pessoas das clínicas que usam o painel do {site.name};</li>
+      <li>
+        os pacientes das clínicas e as pessoas que conversam com a clínica pelo WhatsApp em nome deles
+        (pais, responsáveis, cuidadores), que aqui chamamos de “contatos”.
+      </li>
+    </ul>
   </section>
-</Base>
 
-<style>
-  .placeholder {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-top: 56px;
-  }
-</style>
+  <section id="papeis">
+    <h2>2. Nosso papel: controlador ou operador</h2>
+    <p>A LGPD distingue quem decide sobre o tratamento dos dados de quem trata os dados em nome de outro:</p>
+    <ul>
+      <li>
+        <strong>Somos controladores</strong> dos dados de quem visita este site, de quem fala conosco e
+        das pessoas das clínicas que usam o painel. Nesses casos, decidimos por que e como os dados são
+        tratados.
+      </li>
+      <li>
+        <strong>Somos operadores</strong> dos dados de pacientes e contatos. Quem decide sobre esses
+        dados é a <strong>clínica</strong>, que é a controladora. Tratamos esses dados só para prestar o
+        serviço à clínica, seguindo as instruções dela e o contrato.
+      </li>
+    </ul>
+    <p class="callout">
+      Se você é paciente ou contato de uma clínica que usa o {site.name}, a clínica é a principal
+      responsável pelos seus dados. Você pode falar diretamente com ela ou conosco. Se nos procurar,
+      encaminhamos o seu pedido à clínica e ajudamos a atendê-lo (veja a seção 13).
+    </p>
+  </section>
+
+  <section id="site">
+    <h2>3. Visitantes deste site</h2>
+    <p>
+      Este site <strong>não usa cookies</strong>, não usa ferramentas de análise de audiência nem
+      rastreamento e não exibe publicidade. Não há formulários: nenhum dado é coletado pelo site.
+    </p>
+    <ul>
+      <li>
+        <strong>Dados técnicos de acesso.</strong> Para entregar as páginas e proteger o site contra
+        ataques, nosso provedor de hospedagem (Cloudflare) recebe dados técnicos de cada acesso, como o
+        endereço IP, o navegador e a página pedida. Base legal: legítimo interesse em manter o site no
+        ar e seguro (art. 7º, IX).
+      </li>
+      <li>
+        <strong>Preferência de tema.</strong> Se você escolher o tema claro ou escuro, a escolha fica
+        guardada só no seu navegador. Ela não é enviada a nós nem a terceiros.
+      </li>
+    </ul>
+  </section>
+
+  <section id="contato">
+    <h2>4. Quem entra em contato conosco</h2>
+    <p>
+      Quando você nos escreve pelo WhatsApp ou pelo e-mail {email}, recebemos o que você enviar: em
+      geral nome, telefone, e-mail, nome da clínica e o conteúdo da mensagem.
+    </p>
+    <ul>
+      <li>
+        <strong>Para quê:</strong> responder, apresentar o {site.name}, marcar demonstrações e negociar
+        a contratação.
+      </li>
+      <li>
+        <strong>Base legal:</strong> procedimentos preliminares a um contrato, a seu pedido (art. 7º, V),
+        e legítimo interesse em responder a quem nos procura (art. 7º, IX).
+      </li>
+    </ul>
+    <p>
+      As mensagens de WhatsApp passam pelos serviços da Meta, e os e-mails passam pelo serviço de
+      encaminhamento da Cloudflare e pelo nosso provedor de e-mail.
+    </p>
+  </section>
+
+  <section id="painel">
+    <h2>5. Usuários do painel das clínicas</h2>
+    <p>Das pessoas da clínica que usam o painel (administração, profissionais e recepção), tratamos:</p>
+    <ul>
+      <li>nome, e-mail de acesso, senha (guardada de forma cifrada, nunca em texto) e papel na clínica;</li>
+      <li>
+        registro das ações feitas no painel (por exemplo, quem marcou, remarcou ou cancelou um
+        atendimento, e quando);
+      </li>
+      <li>dados técnicos de acesso, como endereço IP e data e hora de login.</li>
+    </ul>
+    <ul>
+      <li>
+        <strong>Para quê:</strong> dar acesso ao painel, controlar o que cada pessoa pode ver e fazer,
+        manter a trilha de auditoria pedida pela clínica, dar suporte e proteger o sistema.
+      </li>
+      <li>
+        <strong>Base legal:</strong> execução do contrato com a clínica (art. 7º, V) e legítimo interesse
+        na segurança do sistema e na prevenção de fraudes (art. 7º, IX).
+      </li>
+    </ul>
+  </section>
+
+  <section id="pacientes">
+    <h2>6. Pacientes e contatos das clínicas</h2>
+    <p>
+      Aqui atuamos como <strong>operadores</strong>: tratamos os dados em nome da clínica, que é a
+      controladora e define a base legal do tratamento. Conforme o uso que a clínica fizer do sistema,
+      tratamos:
+    </p>
+    <ul>
+      <li>
+        <strong>Do contato</strong> (quem conversa pelo WhatsApp): nome, número de telefone e, no
+        atendimento domiciliar, endereço.
+      </li>
+      <li>
+        <strong>Do paciente</strong> (que pode ser o próprio contato): nome, data de nascimento e
+        observações cadastradas pela clínica.
+      </li>
+      <li>
+        <strong>Dos atendimentos:</strong> serviço (consulta, retorno, exame ou procedimento), data,
+        horário, local, situação (marcado, confirmado, cancelado, compareceu, faltou), valor, lista de
+        espera e histórico de quem marcou, remarcou ou cancelou.
+      </li>
+      <li>
+        <strong>Das conversas:</strong> mensagens trocadas com o WhatsApp da clínica pelo assistente,
+        respostas a lembretes e situação de entrega das mensagens.
+      </li>
+    </ul>
+    <p>
+      <strong>Para quê:</strong> agendar, confirmar, lembrar, remarcar e cancelar atendimentos; enviar
+      orientações de preparo; gerenciar a lista de espera; enviar à equipe o resumo do dia; e gerar para
+      a clínica relatórios de comparecimento e uso.
+    </p>
+    <p>
+      <strong>O que não fazemos:</strong> não vendemos esses dados, não os usamos para publicidade e não
+      os usamos para outra finalidade que não seja prestar o serviço à clínica. Também não guardamos
+      prontuários nem anotações clínicas: eles continuam no sistema que a clínica já usa.
+    </p>
+  </section>
+
+  <section id="saude-criancas">
+    <h2>7. Dados de saúde e de crianças e adolescentes</h2>
+    <p>
+      O fato de uma pessoa ter um atendimento marcado numa clínica, e o tipo de exame ou procedimento,
+      podem revelar informações sobre a saúde dela. Por isso tratamos esses dados como
+      <strong>dados pessoais sensíveis</strong> (art. 5º, II, e art. 11 da LGPD), com acesso restrito à
+      clínica responsável e às medidas de segurança da seção 12.
+    </p>
+    <p>
+      Muitas clínicas atendem crianças e adolescentes. Nesse caso, quem conversa pelo WhatsApp e
+      fornece os dados é, em geral, o pai, a mãe ou o responsável. O tratamento desses dados deve ser
+      feito no melhor interesse da criança e do adolescente (art. 14 da LGPD). A clínica, como
+      controladora, define a base legal e responde pela relação com os responsáveis. Nós tratamos
+      esses dados apenas para o agendamento, conforme as instruções dela.
+    </p>
+  </section>
+
+  <section id="whatsapp">
+    <h2>8. WhatsApp e Meta</h2>
+    <p>
+      As conversas com as clínicas acontecem pelo WhatsApp Business, da Meta. O {site.name} se
+      conecta ao número da clínica pela API oficial do WhatsApp (WhatsApp Business Platform) para
+      receber as mensagens e enviar respostas, confirmações e lembretes.
+    </p>
+    <ul>
+      <li>
+        As mensagens passam pelos servidores da Meta, que as trata conforme os <a
+          href="https://www.whatsapp.com/legal/business-terms"
+          rel="noopener">termos do WhatsApp Business</a
+        > e a <a href="https://www.whatsapp.com/legal/privacy-policy" rel="noopener"
+          >política de privacidade do WhatsApp</a
+        >.
+      </li>
+      <li>
+        Da Meta, recebemos apenas o necessário para o serviço: o número de telefone e o nome de perfil
+        de quem escreve, o conteúdo das mensagens enviadas ao número da clínica e a situação de entrega
+        e leitura das mensagens enviadas.
+      </li>
+      <li>
+        Não usamos os dados recebidos pelo WhatsApp para publicidade, não os vendemos e não os
+        compartilhamos com terceiros além dos listados na seção 9.
+      </li>
+    </ul>
+  </section>
+
+  <section id="compartilhamento">
+    <h2>9. Com quem compartilhamos dados</h2>
+    <p>
+      Usamos poucos fornecedores, cada um só para a parte do serviço que lhe cabe. Eles tratam os dados
+      em nosso nome (como suboperadores, no caso dos dados das clínicas) e seguem obrigações de
+      confidencialidade e segurança.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Fornecedor</th>
+            <th>Para quê</th>
+            <th>Dados envolvidos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Meta (WhatsApp)</td>
+            <td>Troca de mensagens com o número da clínica</td>
+            <td>Telefone, nome de perfil e conteúdo das mensagens</td>
+          </tr>
+          <tr>
+            <td>Supabase</td>
+            <td>Banco de dados e login do painel</td>
+            <td>Todos os dados do sistema descritos nas seções 5 e 6</td>
+          </tr>
+          <tr>
+            <td>Vercel</td>
+            <td>Hospedagem do sistema e do painel</td>
+            <td>Dados em trânsito durante o uso e registros técnicos</td>
+          </tr>
+          <tr>
+            <td>Cloudflare</td>
+            <td>Hospedagem deste site, endereço na internet e encaminhamento de e-mail</td>
+            <td>Dados técnicos de acesso e e-mails enviados a {email}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Além desses, podemos compartilhar dados quando a lei exigir ou por ordem de autoridade
+      competente, e para defender direitos em processo judicial, administrativo ou arbitral.
+    </p>
+  </section>
+
+  <section id="onde">
+    <h2>10. Onde os dados ficam</h2>
+    <p>
+      O banco de dados do sistema fica no <strong>Brasil</strong>, em servidores na região de São Paulo,
+      e o sistema roda, sempre que o fornecedor permite, na mesma região.
+    </p>
+    <p>
+      Os fornecedores da seção 9 são empresas com sede fora do Brasil, e parte do tratamento pode
+      acontecer em outros países (por exemplo, a passagem das mensagens pelos servidores da Meta). Essas
+      transferências internacionais seguem o art. 33 da LGPD, com as garantias contratuais oferecidas
+      por esses fornecedores.
+    </p>
+  </section>
+
+  <section id="retencao">
+    <h2>11. Por quanto tempo guardamos os dados</h2>
+    <ul>
+      <li>
+        <strong>Pacientes e contatos:</strong> enquanto durar o contrato com a clínica, ou até a
+        clínica pedir a exclusão. Quando o contrato termina, os dados são devolvidos à clínica ou
+        excluídos, conforme a instrução dela e o contrato.
+      </li>
+      <li>
+        <strong>Usuários do painel:</strong> enquanto a pessoa tiver acesso à clínica e, depois disso,
+        pelo tempo necessário para manter a trilha de auditoria da clínica e cumprir obrigações legais.
+      </li>
+      <li>
+        <strong>Quem entrou em contato conosco:</strong> pelo tempo da conversa comercial e, depois, só
+        o necessário para manter o histórico do relacionamento.
+      </li>
+      <li>
+        <strong>Registros técnicos de acesso:</strong> pelos prazos dos fornecedores e, no mínimo, pelo
+        prazo exigido pelo Marco Civil da Internet (Lei nº 12.965/2014).
+      </li>
+    </ul>
+    <p>
+      Depois desses prazos, os dados são excluídos ou anonimizados, salvo quando a lei exigir que sejam
+      guardados por mais tempo.
+    </p>
+  </section>
+
+  <section id="seguranca">
+    <h2>12. Segurança</h2>
+    <p>Adotamos medidas técnicas e administrativas para proteger os dados, entre elas:</p>
+    <ul>
+      <li>conexões cifradas (HTTPS) em todo o tráfego;</li>
+      <li>
+        separação dos dados por clínica no próprio banco de dados: uma clínica não acessa os dados de
+        outra;
+      </li>
+      <li>acesso ao painel só com login e de acordo com o papel de cada pessoa na clínica;</li>
+      <li>registro de quem fez cada alteração nos atendimentos;</li>
+      <li>
+        mensagens do WhatsApp recebidas só quando têm a assinatura de segurança da Meta, e links de
+        agendamento enviados aos pacientes com validade e uso único;
+      </li>
+      <li>acesso da nossa equipe aos dados das clínicas só para suporte, e com registro.</li>
+    </ul>
+    <p>
+      Nenhum sistema é totalmente imune a incidentes. Se ocorrer um incidente de segurança que possa
+      causar risco ou dano relevante, avisaremos as clínicas afetadas e, quando for o caso, a Autoridade
+      Nacional de Proteção de Dados (ANPD) e os titulares, conforme a LGPD.
+    </p>
+  </section>
+
+  <section id="direitos">
+    <h2>13. Seus direitos e como exercê-los</h2>
+    <p>Pela LGPD (art. 18), você pode pedir:</p>
+    <ul>
+      <li>confirmação de que tratamos dados seus e acesso a eles;</li>
+      <li>correção de dados incompletos, inexatos ou desatualizados;</li>
+      <li>anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a lei;</li>
+      <li>portabilidade dos dados a outro fornecedor;</li>
+      <li>eliminação dos dados tratados com base no seu consentimento;</li>
+      <li>informação sobre com quem compartilhamos seus dados;</li>
+      <li>informação sobre a possibilidade de não dar consentimento e as consequências disso;</li>
+      <li>revogação do consentimento, quando ele for a base do tratamento;</li>
+      <li>revisão de decisões tomadas só com base em tratamento automatizado.</li>
+    </ul>
+    <p>
+      <strong>Como pedir:</strong> escreva para <a href={`mailto:${email}`}>{email}</a>. Podemos pedir
+      informações para confirmar a sua identidade antes de atender, para proteger os seus dados.
+      Respondemos nos prazos da LGPD.
+    </p>
+    <p>
+      <strong>Se você é paciente ou contato de uma clínica</strong>, o pedido também pode ser feito
+      diretamente à clínica. Se você nos procurar, encaminhamos o pedido à clínica responsável e a
+      ajudamos a atendê-lo, porque é ela quem decide sobre esses dados.
+    </p>
+    <p>
+      Você também pode apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), em <a
+        href="https://www.gov.br/anpd"
+        rel="noopener">gov.br/anpd</a
+      >.
+    </p>
+  </section>
+
+  <section id="exclusao">
+    <h2>14. Como pedir a exclusão dos seus dados</h2>
+    <p>Para pedir a exclusão dos seus dados, inclusive os recebidos pelo WhatsApp:</p>
+    <ul>
+      <li>
+        envie um e-mail para <a href={`mailto:${email}`}>{email}</a> com o assunto “Exclusão de dados”,
+        informando o número de telefone usado no WhatsApp e, se for o caso, o nome da clínica;
+      </li>
+      <li>confirmaremos o recebimento e, se necessário, pediremos dados para confirmar a sua identidade;</li>
+      <li>
+        se os dados forem de paciente ou contato de uma clínica, a exclusão é feita em conjunto com ela,
+        que pode ter obrigação legal de guardar parte dos registros;
+      </li>
+      <li>avisaremos quando a exclusão for concluída.</li>
+    </ul>
+  </section>
+
+  <section id="encarregado">
+    <h2>15. Encarregado e contato</h2>
+    <p>
+      O canal de comunicação com o encarregado pelo tratamento de dados pessoais do {site.name} é o
+      e-mail <a href={`mailto:${email}`}>{email}</a>. Por ele você pode tirar dúvidas sobre esta
+      política, exercer seus direitos e relatar qualquer problema com seus dados.
+    </p>
+    <p>
+      Controlador: {legalNameLabel}, CNPJ {cnpjLabel}, responsável pela marca {site.name}.
+    </p>
+  </section>
+
+  <section id="alteracoes">
+    <h2>16. Alterações desta política</h2>
+    <p>
+      Podemos atualizar esta política para acompanhar mudanças no serviço ou na lei. A data da versão
+      fica sempre no topo da página. Se a mudança for relevante, avisaremos as clínicas antes de ela
+      valer.
+    </p>
+  </section>
+</Legal>

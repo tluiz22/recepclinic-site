@@ -1,0 +1,163 @@
+---
+// Layout das páginas legais: título, selo de revisão, índice e texto corrido.
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  // Data da versão, no formato dd/mm/aaaa.
+  updated: string;
+  // Enquanto true, mostra o selo "versão em revisão jurídica".
+  inReview: boolean;
+  toc: { id: string; label: string }[];
+}
+
+const { title, description, updated, inReview, toc } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <article class="container legal">
+    <header class="legal-head">
+      <h1>{title}</h1>
+      <p class="meta">
+        {inReview && <span class="badge">Versão em revisão jurídica</span>}
+        <span class="muted">Versão de {updated}</span>
+      </p>
+      {
+        inReview && (
+          <p class="review-note">
+            Este texto foi publicado para consulta e está em revisão por advogado. A versão revisada
+            substituirá esta, com nova data.
+          </p>
+        )
+      }
+    </header>
+
+    <nav class="toc" aria-label="Nesta página">
+      <span class="eyebrow">Nesta página</span>
+      <ol>
+        {
+          toc.map((item) => (
+            <li>
+              <a href={`#${item.id}`}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .legal {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 40px;
+    max-width: calc(760px + 2 * var(--gutter));
+  }
+  .legal-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    font-size: 0.95rem;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--warm-soft);
+    color: var(--warm);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .review-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .toc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .prose :global(section) {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 16px;
+    scroll-margin-top: 16px;
+  }
+  .prose :global(h2) {
+    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  }
+  .prose :global(h3) {
+    margin-top: 6px;
+  }
+  .prose :global(ul) {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 64ch;
+  }
+  .prose :global(li::marker) {
+    color: var(--accent);
+  }
+  .prose :global(.table-wrap) {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .prose :global(tr:last-child td) {
+    border-bottom: 0;
+  }
+  .prose :global(th) {
+    background: var(--surface);
+    font-weight: 600;
+  }
+  .prose :global(.callout) {
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+  }
+</style>
