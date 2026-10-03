@@ -91,9 +91,9 @@
 
 ### S2 — Página Início
 
-> **Status (03/out/2026):** página implementada (texto adaptado da proposta de valor, exemplo de
-> lembrete, seção "nasceu num consultório pediátrico", contato no fim com âncora `#contato`);
-> WhatsApp (61) 99864-5490 no botão de contato e no rodapé; aguardando a leitura do cliente.
+> **Status:** concluída e validada pelo cliente em 03/out/2026. Texto adaptado da proposta de valor, exemplo de
+> lembrete, seção "nasceu num consultório pediátrico", contato no fim com âncora `#contato`;
+> WhatsApp (61) 99864-5490 no botão de contato e no rodapé.
 
 - Adaptação da proposta de valor conforme "Base de conteúdo".
 - Contato: botão de WhatsApp (número pessoal, informado pelo cliente nesta etapa) e
