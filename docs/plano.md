@@ -69,7 +69,7 @@
 | S-5 | Contato | **WhatsApp pessoal do cliente** + `contato@recepclinic.com.br` **redirecionado para o e-mail pessoal** (Email Routing da Cloudflare). **Sem formulário.** |
 | S-6 | Visual | O da **proposta de valor** (verde-petróleo, Bricolage Grotesque nos títulos, Source Sans no texto, claro e escuro); **logo provisório só com o nome** "RecepClinic" e ícone simples |
 | S-7 | Páginas legais | **Redigidas pelo Claude** a partir do que o sistema faz, publicadas como "versão em revisão"; **revisão de advogado antes do 1º piloto** |
-| S-8 | Analytics | **Google Analytics 4** (decisão do cliente, 04/out/2026, revendo o padrão "sem analytics"; a alternativa sem cookies, Cloudflare Web Analytics, foi apresentada). Só com **consentimento** (aviso "Aceitar/Recusar", GA carregado só após o aceite, troca pelo rodapé); sinais de publicidade desligados; política atualizada (seções 3, 9, 10 e 11); retenção de 2 meses |
+| S-8 | Analytics | **Google Analytics 4** (decisão do cliente, 04/out/2026, revendo o padrão "sem analytics"; a alternativa sem cookies, Cloudflare Web Analytics, foi apresentada). Só com **consentimento** (aviso "Aceitar/Recusar", GA carregado só após o aceite, troca pelo rodapé); sinais de publicidade desligados; política atualizada (seções 3, 9, 10 e 11); retenção de 2 meses. Publicado e validado pelo cliente em 04/out/2026 (visita no Tempo real) |
 
 ## Padrões assumidos (revisáveis)
 
