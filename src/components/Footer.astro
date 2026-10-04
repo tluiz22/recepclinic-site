@@ -26,6 +26,15 @@ const year = new Date().getFullYear();
       <ul>
         <li><a href="/privacidade">Política de privacidade</a></li>
         <li><a href="/termos">Termos de uso</a></li>
+        {
+          site.analytics.gaId && (
+            <li>
+              <button type="button" class="link" data-consent-open>
+                Preferências de cookies
+              </button>
+            </li>
+          )
+        }
       </ul>
     </div>
   </div>
@@ -63,6 +72,17 @@ const year = new Date().getFullYear();
   }
   a {
     overflow-wrap: anywhere;
+  }
+  .link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent);
+    font: inherit;
+    text-align: left;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
   }
   .company {
     display: flex;

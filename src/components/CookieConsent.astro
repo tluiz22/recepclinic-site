@@ -1,0 +1,169 @@
+---
+// Aviso de cookies do Google Analytics. O GA só é carregado depois do "Aceitar"; a escolha fica
+// guardada no navegador e pode ser trocada pelo link "Preferências de cookies" do rodapé.
+import { site } from '../config/site';
+
+const gaId = site.analytics.gaId;
+---
+
+{
+  gaId && (
+    <div class="consent" data-consent data-ga-id={gaId} role="region" aria-label="Aviso de cookies" hidden>
+      <div class="container box">
+        <p>
+          Usamos cookies do Google Analytics para contar visitas e entender como o site é usado, só
+          se você aceitar. Saiba mais na <a href="/privacidade#site">política de privacidade</a>.
+        </p>
+        <div class="actions">
+          <button type="button" class="secondary" data-consent-choice="denied">
+            Recusar
+          </button>
+          <button type="button" class="primary" data-consent-choice="granted">
+            Aceitar
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 10;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 -8px 24px rgb(0 0 0 / 0.08);
+    font-size: 0.95rem;
+  }
+  .consent[hidden] {
+    display: none;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-block: 16px;
+  }
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  button {
+    flex: 1;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font: 600 0.95rem/1 var(--body);
+    cursor: pointer;
+  }
+  .primary {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  .secondary {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .secondary:hover {
+    border-color: var(--accent);
+  }
+  @media (min-width: 561px) {
+    .box {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    button {
+      flex: none;
+    }
+  }
+</style>
+
+<script>
+  declare global {
+    interface Window {
+      dataLayer: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    }
+  }
+
+  const KEY = 'consent-analytics';
+  const banner = document.querySelector<HTMLElement>('[data-consent]');
+  const gaId = banner?.dataset.gaId;
+
+  function readChoice() {
+    try {
+      return localStorage.getItem(KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  function saveChoice(choice: string) {
+    try {
+      localStorage.setItem(KEY, choice);
+    } catch {}
+  }
+
+  function loadAnalytics() {
+    if (!gaId || window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      // O gtag.js espera o objeto arguments, não um array.
+      window.dataLayer.push(arguments);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', gaId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    document.head.append(script);
+  }
+
+  // Apaga os cookies _ga* criados antes, quando o visitante muda de "Aceitar" para "Recusar".
+  function clearAnalyticsCookies() {
+    const domains = ['', location.hostname, `.${location.hostname.replace(/^www\./, '')}`];
+    for (const name of document.cookie.split(';').map((c) => c.split('=')[0].trim())) {
+      if (!name.startsWith('_ga')) continue;
+      for (const domain of domains) {
+        document.cookie = `${name}=; Max-Age=0; path=/${domain ? `; domain=${domain}` : ''}`;
+      }
+    }
+  }
+
+  if (banner && gaId) {
+    const choice = readChoice();
+    if (choice === 'granted') loadAnalytics();
+    else if (choice !== 'denied') banner.hidden = false;
+
+    banner.querySelectorAll<HTMLButtonElement>('[data-consent-choice]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const next = button.dataset.consentChoice!;
+        const wasGranted = readChoice() === 'granted';
+        saveChoice(next);
+        banner.hidden = true;
+        if (next === 'granted') loadAnalytics();
+        else if (wasGranted) {
+          clearAnalyticsCookies();
+          // Recarrega para descarregar o script do Google já em execução.
+          location.reload();
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-consent-open]').forEach((link) => {
+      link.addEventListener('click', () => {
+        banner.hidden = false;
+        banner.querySelector<HTMLButtonElement>('[data-consent-choice="granted"]')?.focus();
+      });
+    });
+  }
+</script>

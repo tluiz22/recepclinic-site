@@ -41,14 +41,18 @@
 | Hospedagem | Cloudflare **Worker com arquivos estáticos** `recepclinic-site` (Workers Builds); **publica sozinho a cada push na `main`**; configuração em `wrangler.jsonc`; cabeçalhos em `public/_headers` |
 | Domínio | DNS na Cloudflare; `www.recepclinic.com.br` é o endereço oficial; `recepclinic.com.br` → `www` (Redirect Rule, 301); Always Use HTTPS ligado; `recepclinic-site.tluiz22.workers.dev` continua ativo |
 | E-mail | Email Routing: `contato@recepclinic.com.br` → `tluiz22projetos@gmail.com` (só recebe) |
-| Páginas legais | `/privacidade` e `/termos`, "versão em revisão jurídica" de 03/10/2026 |
+| Páginas legais | `/privacidade` (versão de 04/10/2026, com o Google Analytics) e `/termos` (03/10/2026), ambas "versão em revisão jurídica" |
+| Analytics | Google Analytics 4 `G-KE3HKJ7NK9` (`site.analytics.gaId` em `src/config/site.ts`), carregado **só depois do "Aceitar"** no aviso de cookies (`src/components/CookieConsent.astro`); "Preferências de cookies" no rodapé; domínios do Google liberados no CSP de `public/_headers` (S-8) |
 
 **Pendências fora das etapas** (nenhuma bloqueia a S6)
 
 - **Revisão das páginas legais por advogado antes do 1º piloto** (S-7). Ao receber a versão
   revisada: atualizar o texto, a data (`updated`) e tirar o selo (`inReview={false}`) em
   `src/pages/privacidade.astro` e `src/pages/termos.astro`. Pontos deixados para o advogado: prazos
-  de retenção, limite de responsabilidade, foro e a aplicação do Decreto 7.962/2013.
+  de retenção, limite de responsabilidade, foro e a aplicação do Decreto 7.962/2013, e agora também
+  o aviso de cookies e o trecho do Google Analytics (S-8).
+- **Retenção do Google Analytics em 2 meses** (o que a política diz): conferir no GA em
+  Administrador → Configurações de dados → Retenção de dados.
 - **A política descreve o produto no modelo alvo** (dados separados por clínica, D1; acesso do
   suporte registrado, D6): isso precisa estar pronto no produto antes do 1º piloto.
 - Opcionais, a critério do cliente: desligar o endereço `workers.dev` (Worker → Settings → Domains &
@@ -65,6 +69,7 @@
 | S-5 | Contato | **WhatsApp pessoal do cliente** + `contato@recepclinic.com.br` **redirecionado para o e-mail pessoal** (Email Routing da Cloudflare). **Sem formulário.** |
 | S-6 | Visual | O da **proposta de valor** (verde-petróleo, Bricolage Grotesque nos títulos, Source Sans no texto, claro e escuro); **logo provisório só com o nome** "RecepClinic" e ícone simples |
 | S-7 | Páginas legais | **Redigidas pelo Claude** a partir do que o sistema faz, publicadas como "versão em revisão"; **revisão de advogado antes do 1º piloto** |
+| S-8 | Analytics | **Google Analytics 4** (decisão do cliente, 04/out/2026, revendo o padrão "sem analytics"; a alternativa sem cookies, Cloudflare Web Analytics, foi apresentada). Só com **consentimento** (aviso "Aceitar/Recusar", GA carregado só após o aceite, troca pelo rodapé); sinais de publicidade desligados; política atualizada (seções 3, 9, 10 e 11); retenção de 2 meses |
 
 ## Padrões assumidos (revisáveis)
 
@@ -81,7 +86,8 @@
 - **Apex → www**: `recepclinic.com.br` redireciona para `www.recepclinic.com.br`.
 - **SEO básico**: título e descrição por página, sitemap, `robots.txt`, imagem de compartilhamento
   com o nome, ícone.
-- **Sem analytics, cookies ou rastreamento** na 1ª versão (simplifica a política de privacidade).
+- ~~**Sem analytics, cookies ou rastreamento** na 1ª versão~~ **Revisto em 04/out/2026:** Google
+  Analytics com consentimento (S-8).
 
 ## Base de conteúdo
 

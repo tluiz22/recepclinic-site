@@ -12,6 +12,12 @@ export const site = {
     whatsapp: '5561998645490' as string | null,
   },
 
+  // Google Analytics 4 (decisão do cliente, 04/out/2026). Só carrega depois que o visitante
+  // aceita no aviso de cookies. null desliga o analytics e o aviso.
+  analytics: {
+    gaId: 'G-KE3HKJ7NK9' as string | null,
+  },
+
   company: {
     // Preenchidos quando o CNPJ sair (S6). Enquanto legalName for null, o site não mostra nada
     // sobre a empresa (decisão do cliente, 04/out/2026).
