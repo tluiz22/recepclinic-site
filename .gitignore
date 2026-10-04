@@ -14,3 +14,6 @@ npm-debug.log*
 
 # sistema
 .DS_Store
+
+# wrangler (servidor local da Cloudflare)
+.wrangler/

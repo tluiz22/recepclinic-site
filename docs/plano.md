@@ -26,7 +26,7 @@
 | # | Assunto | Decisão |
 |---|---|---|
 | S-1 | Onde fica | **Projeto separado** do produto (D7 ajustada): `www.recepclinic.com.br` = site; `app.recepclinic.com.br` = produto (este repositório) |
-| S-2 | Hospedagem | **Cloudflare Pages** (grátis, permite uso comercial, repositório privado), com o **DNS do domínio na Cloudflare** |
+| S-2 | Hospedagem | **Cloudflare Pages** (grátis, permite uso comercial, repositório privado), com o **DNS do domínio na Cloudflare**. Na criação (04/out/2026), a Cloudflare fez um **Worker com arquivos estáticos** (mesmo plano grátis); ver S5 |
 | S-3 | Páginas | **Início** (apresentação adaptada da proposta de valor) + **Política de privacidade** + **Termos de uso**; contato no Início e no rodapé |
 | S-4 | Empresa | **CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente). ~~O site vai ao ar com espaço reservado~~ **Ajuste (04/out/2026):** até o CNPJ sair, o site **não mostra nada sobre a empresa** (só "© RecepClinic"; política e termos falam em "RecepClinic"). Ao preencher razão social e CNPJ em `src/config/site.ts`, entra "RecepClinic é uma marca de <razão social>, CNPJ <número>" no rodapé, na abertura da política e dos termos e no "Controlador" |
 | S-5 | Contato | **WhatsApp pessoal do cliente** + `contato@recepclinic.com.br` **redirecionado para o e-mail pessoal** (Email Routing da Cloudflare). **Sem formulário.** |
@@ -137,6 +137,12 @@
 > **Decisão (04/out/2026):** publicar já, **aberto às buscas** (sem `noindex`), mesmo antes do CNPJ e
 > da revisão jurídica. Contatos de clínicas nesse período: conversa, demonstração e lista de
 > interessados; contrato e nota só depois do CNPJ.
+> **04/out/2026:** a Cloudflare criou o projeto como **Worker com arquivos estáticos** (Workers Builds,
+> deploy a cada push na `main`), não como Pages: endereço provisório
+> `https://recepclinic-site.tluiz22.workers.dev`. Configuração no repositório em `wrangler.jsonc`
+> (pasta `dist`, URLs sem barra no fim, `404.html` para endereços inexistentes). `_headers` vale do
+> mesmo jeito. Conferido: páginas, sitemap, `robots.txt`, cabeçalhos de segurança e cache.
+> Destino do Email Routing (`contato@`): `tluiz22projetos@gmail.com`.
 
 - Cloudflare Pages ligado ao repositório (deploy a cada push na `main`); domínio
   `www.recepclinic.com.br` com HTTPS; `recepclinic.com.br` redirecionando para `www`.

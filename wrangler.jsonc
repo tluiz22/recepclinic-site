@@ -1,0 +1,14 @@
+// Configuração do Worker na Cloudflare que serve o site estático (pasta dist).
+// O deploy é feito pela Cloudflare a cada push na main (Workers Builds).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "recepclinic-site",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve privacidade.html em /privacidade (sem barra no fim).
+    "html_handling": "drop-trailing-slash",
+    // Endereço inexistente: responde 404 com a página 404.html.
+    "not_found_handling": "404-page"
+  }
+}
