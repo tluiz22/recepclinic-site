@@ -1,6 +1,6 @@
 ---
 import Legal from '../layouts/Legal.astro';
-import { site, legalNameLabel, cnpjLabel } from '../config/site';
+import { site, companyIdentity } from '../config/site';
 
 const email = site.contact.email;
 
@@ -34,7 +34,11 @@ const toc = [
   <section id="aceite">
     <h2>1. Quem somos e aceite destes termos</h2>
     <p>
-      {site.name} é uma marca de {legalNameLabel}, CNPJ {cnpjLabel} (“{site.name}”, “nós”). Estes termos
+      {
+        companyIdentity
+          ? `${site.name} é uma marca de ${companyIdentity} (“${site.name}”, “nós”).`
+          : `Neste texto, “nós” é o ${site.name}.`
+      } Estes termos
       regulam o uso do {site.name} pela clínica ou consultório que o contrata (“clínica”) e pelas
       pessoas que a clínica autoriza a usar o painel (“usuários”).
     </p>
@@ -294,8 +298,8 @@ const toc = [
   <section id="lei">
     <h2>15. Lei aplicável e foro</h2>
     <p>
-      Estes termos seguem as leis do Brasil. Fica eleito o foro da comarca da sede de {legalNameLabel}
-      para resolver questões sobre eles, salvo se o contrato indicar outro.
+      Estes termos seguem as leis do Brasil. Fica eleito o foro da comarca da sede da empresa responsável
+      pelo {site.name} para resolver questões sobre eles, salvo se o contrato indicar outro.
     </p>
   </section>
 

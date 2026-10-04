@@ -28,7 +28,7 @@
 | S-1 | Onde fica | **Projeto separado** do produto (D7 ajustada): `www.recepclinic.com.br` = site; `app.recepclinic.com.br` = produto (este repositório) |
 | S-2 | Hospedagem | **Cloudflare Pages** (grátis, permite uso comercial, repositório privado), com o **DNS do domínio na Cloudflare** |
 | S-3 | Páginas | **Início** (apresentação adaptada da proposta de valor) + **Política de privacidade** + **Termos de uso**; contato no Início e no rodapé |
-| S-4 | Empresa | **CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente). O site vai ao ar com **espaço reservado** para razão social e CNPJ, preenchido quando o CNPJ sair |
+| S-4 | Empresa | **CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente). ~~O site vai ao ar com espaço reservado~~ **Ajuste (04/out/2026):** até o CNPJ sair, o site **não mostra nada sobre a empresa** (só "© RecepClinic"; política e termos falam em "RecepClinic"). Ao preencher razão social e CNPJ em `src/config/site.ts`, entra "RecepClinic é uma marca de <razão social>, CNPJ <número>" no rodapé, na abertura da política e dos termos e no "Controlador" |
 | S-5 | Contato | **WhatsApp pessoal do cliente** + `contato@recepclinic.com.br` **redirecionado para o e-mail pessoal** (Email Routing da Cloudflare). **Sem formulário.** |
 | S-6 | Visual | O da **proposta de valor** (verde-petróleo, Bricolage Grotesque nos títulos, Source Sans no texto, claro e escuro); **logo provisório só com o nome** "RecepClinic" e ícone simples |
 | S-7 | Páginas legais | **Redigidas pelo Claude** a partir do que o sistema faz, publicadas como "versão em revisão"; **revisão de advogado antes do 1º piloto** |
@@ -142,6 +142,13 @@
 - **Validar:** abrir o site pelo domínio no celular; mandar um e-mail para `contato@` e ver chegar.
 
 ### S6 — Conferência para a Meta e CNPJ
+
+> **Levantado em 04/out/2026** (a confirmar nas páginas atuais da Meta nesta etapa): a verificação é
+> da pessoa jurídica; o nome legal no Gerenciador de Negócios deve bater **exatamente** com o
+> documento (cartão CNPJ/contrato social), e o **nome legal precisa aparecer no site** (rodapé ou
+> contato), mostrando a relação com a marca ("RecepClinic é uma marca de <razão social>"). O
+> cliente considerou usar uma empresa que já tem na Meta e **decidiu manter o CNPJ próprio do
+> RecepClinic** (S-4), para não ter de refazer a verificação e transferir o app depois.
 
 - Checklist do que a verificação costuma pedir, **conferido nas páginas atuais da Meta**: nome
   da empresa igual ao do CNPJ, contato, e-mail no domínio, política de privacidade publicada.

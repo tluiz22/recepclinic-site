@@ -1,6 +1,6 @@
 ---
 import Legal from '../layouts/Legal.astro';
-import { site, legalNameLabel, cnpjLabel } from '../config/site';
+import { site, companyIdentity } from '../config/site';
 
 const email = site.contact.email;
 
@@ -39,7 +39,11 @@ const toc = [
       WhatsApp da clínica, e a equipe acompanha a agenda num painel na internet.
     </p>
     <p>
-      {site.name} é uma marca de {legalNameLabel}, CNPJ {cnpjLabel} (“{site.name}”, “nós”). Esta
+      {
+        companyIdentity
+          ? `${site.name} é uma marca de ${companyIdentity} (“${site.name}”, “nós”).`
+          : `Neste texto, “nós” é o ${site.name}.`
+      } Esta
       política explica quais dados pessoais tratamos, para quê, com quem os compartilhamos e como você
       exerce seus direitos, conforme a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018,
       “LGPD”).
@@ -393,9 +397,13 @@ const toc = [
       e-mail <a href={`mailto:${email}`}>{email}</a>. Por ele você pode tirar dúvidas sobre esta
       política, exercer seus direitos e relatar qualquer problema com seus dados.
     </p>
-    <p>
-      Controlador: {legalNameLabel}, CNPJ {cnpjLabel}, responsável pela marca {site.name}.
-    </p>
+    {
+      companyIdentity && (
+        <p>
+          Controlador: {companyIdentity}, responsável pela marca {site.name}.
+        </p>
+      )
+    }
   </section>
 
   <section id="alteracoes">
