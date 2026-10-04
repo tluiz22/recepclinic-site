@@ -146,8 +146,11 @@
 > **Domínio (04/out/2026):** DNS na Cloudflare (Active); Worker com os domínios personalizados
 > `recepclinic.com.br` e `www.recepclinic.com.br`; Redirect Rule `sem www para www` (301, preserva
 > caminho e parâmetros). Conferido: `www` com HTTPS (certificado até jan/2027), páginas, 404,
-> sitemap e cabeçalhos. Corrigido o link canônico (vinha com `.html`). Pendentes: "Always Use HTTPS"
-> (`http://www` abria sem redirecionar) e o Email Routing.
+> sitemap e cabeçalhos. Corrigido o link canônico (vinha com `.html`). "Always Use HTTPS" ligado
+> (`http://` → `https://`, 301). Email Routing ativo: MX `route1/2/3.mx.cloudflare.net`, SPF
+> `include:_spf.mx.cloudflare.net ~all` e DKIM publicados (o MX nulo e o `v=spf1 -all` herdados do
+> registro.br foram apagados). O `contato@` só **recebe**: respostas saem do Gmail pessoal. Aguardando
+> a validação do cliente (site no celular e e-mail de teste).
 
 - Cloudflare Pages ligado ao repositório (deploy a cada push na `main`); domínio
   `www.recepclinic.com.br` com HTTPS; `recepclinic.com.br` redirecionando para `www`.
