@@ -21,6 +21,39 @@
 > Meta (pendência registrada no plano do produto, a tratar **depois** do site) exigem um site no
 > domínio da empresa, com nome, contato e política de privacidade.
 
+## Situação atual (atualizada em 04/out/2026)
+
+**O site está no ar em https://www.recepclinic.com.br.** Etapas S0 a S5 concluídas e validadas.
+
+**Próxima etapa: S6**, que **depende do CNPJ** (em abertura pelo cliente). Ao retomar:
+
+1. Perguntar ao cliente se o CNPJ já saiu. Se não, não há etapa a executar; só as pendências abaixo.
+2. Com o CNPJ: preencher `legalName` e `cnpj` em `src/config/site.ts` (o texto aparece sozinho no
+   rodapé, na abertura da política e dos termos e no "Controlador"), conferir `npm run check` e
+   `npm run build`, publicar (push na `main`) e seguir o checklist da S6.
+
+**Como o site funciona hoje**
+
+| Item | Onde / como |
+|---|---|
+| Código | Astro 7 estático; `npm run dev`, `npm run check`, `npm run build`; CI no GitHub (`check` + `build`) |
+| Dados da empresa e contato | `src/config/site.ts` (WhatsApp `5561998645490`, `contato@recepclinic.com.br`; razão social e CNPJ vazios) |
+| Hospedagem | Cloudflare **Worker com arquivos estáticos** `recepclinic-site` (Workers Builds); **publica sozinho a cada push na `main`**; configuração em `wrangler.jsonc`; cabeçalhos em `public/_headers` |
+| Domínio | DNS na Cloudflare; `www.recepclinic.com.br` é o endereço oficial; `recepclinic.com.br` → `www` (Redirect Rule, 301); Always Use HTTPS ligado; `recepclinic-site.tluiz22.workers.dev` continua ativo |
+| E-mail | Email Routing: `contato@recepclinic.com.br` → `tluiz22projetos@gmail.com` (só recebe) |
+| Páginas legais | `/privacidade` e `/termos`, "versão em revisão jurídica" de 03/10/2026 |
+
+**Pendências fora das etapas** (nenhuma bloqueia a S6)
+
+- **Revisão das páginas legais por advogado antes do 1º piloto** (S-7). Ao receber a versão
+  revisada: atualizar o texto, a data (`updated`) e tirar o selo (`inReview={false}`) em
+  `src/pages/privacidade.astro` e `src/pages/termos.astro`. Pontos deixados para o advogado: prazos
+  de retenção, limite de responsabilidade, foro e a aplicação do Decreto 7.962/2013.
+- **A política descreve o produto no modelo alvo** (dados separados por clínica, D1; acesso do
+  suporte registrado, D6): isso precisa estar pronto no produto antes do 1º piloto.
+- Opcionais, a critério do cliente: desligar o endereço `workers.dev` (Worker → Settings → Domains &
+  Routes); publicar um registro DMARC; enviar e-mails **como** `contato@` (exige serviço de envio).
+
 ## Decisões
 
 | # | Assunto | Decisão |
@@ -65,6 +98,9 @@
 ## Etapas
 
 ### S0 — Preparação (cliente, pode começar já)
+
+> **Status:** concluída. Repositório criado em 03/out/2026; domínio ativo na Cloudflare em
+> 04/out/2026 (servidores `crystal` e `rodney.ns.cloudflare.com`).
 
 - Criar o repositório **vazio e privado** `tluiz22/recepclinic-site` no GitHub e cloná-lo:
   `git clone https://github.com/tluiz22/recepclinic-site.git ~/Documents/Desenvolvimento/recepclinic-site`.
@@ -130,27 +166,25 @@
 
 ### S5 — Publicação
 
-> **Status (04/out/2026):** preparação no código feita: sitemap, `robots.txt`, página 404, imagem de
-> compartilhamento (`og.png`) e ícone para celular, metatags de compartilhamento, cabeçalhos de
-> segurança e cache (`public/_headers`), páginas geradas como `.html` (URLs `/privacidade` e
-> `/termos` sem barra no fim nem redirecionamento). Falta a configuração na Cloudflare (cliente).
-> **Decisão (04/out/2026):** publicar já, **aberto às buscas** (sem `noindex`), mesmo antes do CNPJ e
-> da revisão jurídica. Contatos de clínicas nesse período: conversa, demonstração e lista de
-> interessados; contrato e nota só depois do CNPJ.
-> **04/out/2026:** a Cloudflare criou o projeto como **Worker com arquivos estáticos** (Workers Builds,
-> deploy a cada push na `main`), não como Pages: endereço provisório
-> `https://recepclinic-site.tluiz22.workers.dev`. Configuração no repositório em `wrangler.jsonc`
-> (pasta `dist`, URLs sem barra no fim, `404.html` para endereços inexistentes). `_headers` vale do
-> mesmo jeito. Conferido: páginas, sitemap, `robots.txt`, cabeçalhos de segurança e cache.
-> Destino do Email Routing (`contato@`): `tluiz22projetos@gmail.com`.
-> **Domínio (04/out/2026):** DNS na Cloudflare (Active); Worker com os domínios personalizados
-> `recepclinic.com.br` e `www.recepclinic.com.br`; Redirect Rule `sem www para www` (301, preserva
-> caminho e parâmetros). Conferido: `www` com HTTPS (certificado até jan/2027), páginas, 404,
-> sitemap e cabeçalhos. Corrigido o link canônico (vinha com `.html`). "Always Use HTTPS" ligado
-> (`http://` → `https://`, 301). Email Routing ativo: MX `route1/2/3.mx.cloudflare.net`, SPF
-> `include:_spf.mx.cloudflare.net ~all` e DKIM publicados (o MX nulo e o `v=spf1 -all` herdados do
-> registro.br foram apagados). O `contato@` só **recebe**: respostas saem do Gmail pessoal. Aguardando
-> a validação do cliente (site no celular e e-mail de teste).
+> **Status:** concluída e validada pelo cliente em 04/out/2026 (site aberto no celular pelo domínio;
+> e-mail de teste para `contato@` recebido).
+>
+> - **Decisão:** publicar já, **aberto às buscas**, mesmo antes do CNPJ e da revisão jurídica.
+>   Contatos de clínicas nesse período: conversa, demonstração e lista de interessados; contrato e
+>   nota só depois do CNPJ.
+> - **Código:** sitemap, `robots.txt`, página 404 (fora das buscas), imagem de compartilhamento
+>   (`og.png`) e ícone para celular, metatags de compartilhamento e link canônico, cabeçalhos de
+>   segurança e cache (`public/_headers`), páginas geradas como `.html` (URLs `/privacidade` e
+>   `/termos` sem barra no fim).
+> - **Hospedagem:** a Cloudflare criou o projeto como **Worker com arquivos estáticos** (não Pages),
+>   no mesmo plano grátis; `wrangler.jsonc` serve `dist`, mantém as URLs sem barra e responde com
+>   `404.html`.
+> - **Domínio:** Worker com os domínios `recepclinic.com.br` e `www.recepclinic.com.br`; Redirect
+>   Rule `sem www para www` (301, preserva caminho e parâmetros); Always Use HTTPS; certificado até
+>   jan/2027.
+> - **E-mail:** Email Routing `contato@` → `tluiz22projetos@gmail.com`; MX
+>   `route1/2/3.mx.cloudflare.net`, SPF `include:_spf.mx.cloudflare.net ~all` e DKIM publicados (o MX
+>   nulo e o `v=spf1 -all` herdados do registro.br foram apagados). Só recebe.
 
 - Cloudflare Pages ligado ao repositório (deploy a cada push na `main`); domínio
   `www.recepclinic.com.br` com HTTPS; `recepclinic.com.br` redirecionando para `www`.
@@ -175,10 +209,10 @@
 
 ## Informações que o cliente fornece durante a execução
 
-| Informação | Etapa |
-|---|---|
-| Repositório criado, conta Cloudflare, DNS trocado | S0 |
-| Número de WhatsApp pessoal para o botão | S2 |
-| E-mail pessoal de destino do `contato@` | S5 |
-| Razão social e CNPJ | S6 (quando sair) |
-| Advogado para revisar as páginas legais | antes do 1º piloto |
+| Informação | Etapa | Situação |
+|---|---|---|
+| Repositório criado, conta Cloudflare, DNS trocado | S0 | recebido |
+| Número de WhatsApp pessoal para o botão | S2 | recebido: (61) 99864-5490 |
+| E-mail pessoal de destino do `contato@` | S5 | recebido: `tluiz22projetos@gmail.com` |
+| Razão social e CNPJ | S6 (quando sair) | **pendente** (CNPJ em abertura) |
+| Advogado para revisar as páginas legais | antes do 1º piloto | **pendente** |

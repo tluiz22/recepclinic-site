@@ -1,8 +1,12 @@
 # Site do RecepClinic (`www.recepclinic.com.br`)
 
 O plano vivo deste projeto é [`docs/plano.md`](docs/plano.md): decisões, padrões assumidos, base de
-conteúdo e etapas (S0–S6). Leia-o no início de cada sessão e mantenha-o atualizado aqui (status das
-etapas, decisões novas).
+conteúdo e etapas (S0–S6). Leia-o no início de cada sessão, **começando pela seção "Situação
+atual"** (onde paramos, próxima etapa, como o site funciona e pendências), e mantenha-o atualizado
+aqui (status das etapas, decisões novas, "Situação atual").
+
+O site está no ar em https://www.recepclinic.com.br e **publica sozinho a cada push na `main`**
+(Cloudflare Workers Builds). Antes de qualquer push: `npm run check` e `npm run build` sem erro.
 
 ## Regras de trabalho
 
