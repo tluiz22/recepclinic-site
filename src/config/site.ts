@@ -13,14 +13,20 @@ export const site = {
   },
 
   company: {
-    // Preenchidos quando o CNPJ sair (S6). Enquanto null, o rodapé mostra o espaço reservado.
+    // Preenchidos quando o CNPJ sair (S6). Enquanto legalName for null, o site não mostra nada
+    // sobre a empresa (decisão do cliente, 04/out/2026).
     legalName: null as string | null,
     cnpj: null as string | null,
   },
 };
 
-export const legalNameLabel = site.company.legalName ?? '[razão social]';
-export const cnpjLabel = site.company.cnpj ?? 'em abertura';
+// Razão social e CNPJ prontos para o texto (ex.: "Empresa Ltda., CNPJ 00.000.000/0001-00"),
+// ou null enquanto a empresa não estiver preenchida.
+export const companyIdentity = site.company.legalName
+  ? [site.company.legalName, site.company.cnpj && `CNPJ ${site.company.cnpj}`]
+      .filter(Boolean)
+      .join(', ')
+  : null;
 
 const whatsappGreeting = 'Olá! Quero conhecer o RecepClinic.';
 
