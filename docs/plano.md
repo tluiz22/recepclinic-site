@@ -134,6 +134,9 @@
 > compartilhamento (`og.png`) e ícone para celular, metatags de compartilhamento, cabeçalhos de
 > segurança e cache (`public/_headers`), páginas geradas como `.html` (URLs `/privacidade` e
 > `/termos` sem barra no fim nem redirecionamento). Falta a configuração na Cloudflare (cliente).
+> **Decisão (04/out/2026):** publicar já, **aberto às buscas** (sem `noindex`), mesmo antes do CNPJ e
+> da revisão jurídica. Contatos de clínicas nesse período: conversa, demonstração e lista de
+> interessados; contrato e nota só depois do CNPJ.
 
 - Cloudflare Pages ligado ao repositório (deploy a cada push na `main`); domínio
   `www.recepclinic.com.br` com HTTPS; `recepclinic.com.br` redirecionando para `www`.
