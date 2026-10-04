@@ -143,6 +143,11 @@
 > (pasta `dist`, URLs sem barra no fim, `404.html` para endereços inexistentes). `_headers` vale do
 > mesmo jeito. Conferido: páginas, sitemap, `robots.txt`, cabeçalhos de segurança e cache.
 > Destino do Email Routing (`contato@`): `tluiz22projetos@gmail.com`.
+> **Domínio (04/out/2026):** DNS na Cloudflare (Active); Worker com os domínios personalizados
+> `recepclinic.com.br` e `www.recepclinic.com.br`; Redirect Rule `sem www para www` (301, preserva
+> caminho e parâmetros). Conferido: `www` com HTTPS (certificado até jan/2027), páginas, 404,
+> sitemap e cabeçalhos. Corrigido o link canônico (vinha com `.html`). Pendentes: "Always Use HTTPS"
+> (`http://www` abria sem redirecionar) e o Email Routing.
 
 - Cloudflare Pages ligado ao repositório (deploy a cada push na `main`); domínio
   `www.recepclinic.com.br` com HTTPS; `recepclinic.com.br` redirecionando para `www`.
