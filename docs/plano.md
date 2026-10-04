@@ -118,8 +118,8 @@
 
 ### S4 — Termos de uso (versão em revisão)
 
-> **Status (03/out/2026):** texto publicado em `/termos` (16 seções), no mesmo layout da política;
-> aguardando a leitura do cliente. Preço, prazos, SLA, horário de suporte e limite de valor da
+> **Status:** concluída e validada pelo cliente em 04/out/2026. Texto em `/termos` (16 seções), no
+> mesmo layout da política. Preço, prazos, SLA, horário de suporte e limite de valor da
 > responsabilidade **remetidos à proposta comercial e ao contrato** (sem números nos termos). Foro:
 > comarca da sede da empresa, salvo outro no contrato.
 
@@ -129,6 +129,11 @@
 - **Validar:** leitura do cliente; URL `/termos`.
 
 ### S5 — Publicação
+
+> **Status (04/out/2026):** preparação no código feita: sitemap, `robots.txt`, página 404, imagem de
+> compartilhamento (`og.png`) e ícone para celular, metatags de compartilhamento, cabeçalhos de
+> segurança e cache (`public/_headers`), páginas geradas como `.html` (URLs `/privacidade` e
+> `/termos` sem barra no fim nem redirecionamento). Falta a configuração na Cloudflare (cliente).
 
 - Cloudflare Pages ligado ao repositório (deploy a cada push na `main`); domínio
   `www.recepclinic.com.br` com HTTPS; `recepclinic.com.br` redirecionando para `www`.
