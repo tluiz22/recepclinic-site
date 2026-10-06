@@ -23,13 +23,14 @@
 
 ## Situação atual (atualizada em 06/out/2026)
 
-**O site está no ar em https://www.recepclinic.com.br.** Etapas S0 a S5 concluídas e validadas.
+**O site está no ar em https://www.recepclinic.com.br.** **Todas as etapas (S0 a S6) concluídas e
+validadas.** A empresa (CNPJ MEI) foi **verificada pela Meta**, sem os dados da empresa no site (S-4).
 
-**Próxima etapa: S6**, sem mudança de código: o cliente abriu um **CNPJ MEI** e decidiu **não mostrar
-os dados da empresa no site** (S-4, 06/out/2026). A S6 é conferir o checklist da verificação nas
-páginas atuais da Meta e acompanhar o pedido de verificação feito pelo cliente. Se a Meta reprovar por
-falta do nome legal no site, levar a decisão de volta ao cliente (basta preencher `legalName` e `cnpj`
-em `src/config/site.ts`).
+**Não há próxima etapa do site.** A pendência **Tech Provider** segue na sessão do produto, usando
+deste site: política (`/privacidade`), termos (`/termos`), exclusão de dados
+(`/privacidade#exclusao`) e o ícone do app `https://www.recepclinic.com.br/app-icon.png` (1024×1024,
+modelo "calendário com check" escolhido pelo cliente; o logo do site continua o balão). Ao retomar,
+perguntar ao cliente o que deseja; só restam as pendências abaixo.
 
 **Como o site funciona hoje**
 
@@ -199,6 +200,11 @@ em `src/config/site.ts`).
 - **Validar:** abrir o site pelo domínio no celular; mandar um e-mail para `contato@` e ver chegar.
 
 ### S6 — Conferência para a Meta e CNPJ
+
+> **Status:** concluída em 06/out/2026: verificação da empresa **aprovada pela Meta** (informado pelo
+> cliente). Passo a passo da Meta (portfólio, verificação, App Review, Tech Provider) passado ao
+> cliente, conferido na documentação atual de Tech Provider. Ícone do app gerado
+> (`public/app-icon.png`, modelo F, calendário com check).
 
 > **Levantado em 04/out/2026** (a confirmar nas páginas atuais da Meta nesta etapa): a verificação é
 > da pessoa jurídica; o nome legal no Gerenciador de Negócios deve bater **exatamente** com o
