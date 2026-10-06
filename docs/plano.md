@@ -21,16 +21,15 @@
 > Meta (pendência registrada no plano do produto, a tratar **depois** do site) exigem um site no
 > domínio da empresa, com nome, contato e política de privacidade.
 
-## Situação atual (atualizada em 04/out/2026)
+## Situação atual (atualizada em 06/out/2026)
 
 **O site está no ar em https://www.recepclinic.com.br.** Etapas S0 a S5 concluídas e validadas.
 
-**Próxima etapa: S6**, que **depende do CNPJ** (em abertura pelo cliente). Ao retomar:
-
-1. Perguntar ao cliente se o CNPJ já saiu. Se não, não há etapa a executar; só as pendências abaixo.
-2. Com o CNPJ: preencher `legalName` e `cnpj` em `src/config/site.ts` (o texto aparece sozinho no
-   rodapé, na abertura da política e dos termos e no "Controlador"), conferir `npm run check` e
-   `npm run build`, publicar (push na `main`) e seguir o checklist da S6.
+**Próxima etapa: S6**, sem mudança de código: o cliente abriu um **CNPJ MEI** e decidiu **não mostrar
+os dados da empresa no site** (S-4, 06/out/2026). A S6 é conferir o checklist da verificação nas
+páginas atuais da Meta e acompanhar o pedido de verificação feito pelo cliente. Se a Meta reprovar por
+falta do nome legal no site, levar a decisão de volta ao cliente (basta preencher `legalName` e `cnpj`
+em `src/config/site.ts`).
 
 **Como o site funciona hoje**
 
@@ -50,7 +49,8 @@
   revisada: atualizar o texto, a data (`updated`) e tirar o selo (`inReview={false}`) em
   `src/pages/privacidade.astro` e `src/pages/termos.astro`. Pontos deixados para o advogado: prazos
   de retenção, limite de responsabilidade, foro e a aplicação do Decreto 7.962/2013, e agora também
-  o aviso de cookies e o trecho do Google Analytics (S-8).
+  o aviso de cookies e o trecho do Google Analytics (S-8), e a identificação do controlador sem
+  razão social e CNPJ (S-4).
 - **Retenção do Google Analytics em 2 meses** (o que a política diz): conferir no GA em
   Administrador → Configurações de dados → Retenção de dados.
 - **A política descreve o produto no modelo alvo** (dados separados por clínica, D1; acesso do
@@ -65,7 +65,7 @@
 | S-1 | Onde fica | **Projeto separado** do produto (D7 ajustada): `www.recepclinic.com.br` = site; `app.recepclinic.com.br` = produto (este repositório) |
 | S-2 | Hospedagem | **Cloudflare Pages** (grátis, permite uso comercial, repositório privado), com o **DNS do domínio na Cloudflare**. Na criação (04/out/2026), a Cloudflare fez um **Worker com arquivos estáticos** (mesmo plano grátis); ver S5 |
 | S-3 | Páginas | **Início** (apresentação adaptada da proposta de valor) + **Política de privacidade** + **Termos de uso**; contato no Início e no rodapé |
-| S-4 | Empresa | **CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente). ~~O site vai ao ar com espaço reservado~~ **Ajuste (04/out/2026):** até o CNPJ sair, o site **não mostra nada sobre a empresa** (só "© RecepClinic"; política e termos falam em "RecepClinic"). Ao preencher razão social e CNPJ em `src/config/site.ts`, entra "RecepClinic é uma marca de <razão social>, CNPJ <número>" no rodapé, na abertura da política e dos termos e no "Controlador" |
+| S-4 | Empresa | ~~**CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente).~~ **Ajuste (06/out/2026):** o cliente abriu um **CNPJ MEI** para começar o piloto e migrar para ME ao faturar (alertado de que o MEI não cobre atividades de software e de que a troca de razão social na migração exige atualizar a verificação na Meta). Decidiu **não colocar razão social nem CNPJ no site** (a razão social do MEI traz o CPF), nem temporariamente; `legalName` e `cnpj` seguem vazios. Alertado de que a Meta pode pedir o nome legal no site e de que a política identifica o controlador só como "RecepClinic" (ponto para o advogado). ~~O site vai ao ar com espaço reservado~~ **Ajuste (04/out/2026):** até o CNPJ sair, o site **não mostra nada sobre a empresa** (só "© RecepClinic"; política e termos falam em "RecepClinic"). Ao preencher razão social e CNPJ em `src/config/site.ts`, entra "RecepClinic é uma marca de <razão social>, CNPJ <número>" no rodapé, na abertura da política e dos termos e no "Controlador" |
 | S-5 | Contato | **WhatsApp pessoal do cliente** + `contato@recepclinic.com.br` **redirecionado para o e-mail pessoal** (Email Routing da Cloudflare). **Sem formulário.** |
 | S-6 | Visual | O da **proposta de valor** (verde-petróleo, Bricolage Grotesque nos títulos, Source Sans no texto, claro e escuro); **logo provisório só com o nome** "RecepClinic" e ícone simples |
 | S-7 | Páginas legais | **Redigidas pelo Claude** a partir do que o sistema faz, publicadas como "versão em revisão"; **revisão de advogado antes do 1º piloto** |
@@ -209,9 +209,10 @@
 
 - Checklist do que a verificação costuma pedir, **conferido nas páginas atuais da Meta**: nome
   da empresa igual ao do CNPJ, contato, e-mail no domínio, política de privacidade publicada.
-- Quando o CNPJ sair: preencher razão social e CNPJ no arquivo de configuração e publicar.
+- ~~Quando o CNPJ sair: preencher razão social e CNPJ no arquivo de configuração e publicar.~~ CNPJ
+  MEI aberto; dados da empresa **fora do site** por decisão do cliente (S-4, 06/out/2026).
 - Daí em diante, a pendência **Tech Provider** do plano do produto pode começar.
-- **Validar:** checklist completo; rodapé com os dados do CNPJ.
+- **Validar:** checklist completo; verificação da empresa aprovada na Meta.
 
 ## Informações que o cliente fornece durante a execução
 
@@ -220,5 +221,5 @@
 | Repositório criado, conta Cloudflare, DNS trocado | S0 | recebido |
 | Número de WhatsApp pessoal para o botão | S2 | recebido: (61) 99864-5490 |
 | E-mail pessoal de destino do `contato@` | S5 | recebido: `tluiz22projetos@gmail.com` |
-| Razão social e CNPJ | S6 (quando sair) | **pendente** (CNPJ em abertura) |
+| Razão social e CNPJ | S6 | CNPJ MEI aberto; **não vai para o site** (decisão do cliente, 06/out/2026) |
 | Advogado para revisar as páginas legais | antes do 1º piloto | **pendente** |
