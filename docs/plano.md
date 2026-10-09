@@ -24,7 +24,7 @@
 ## Situação atual (atualizada em 06/out/2026)
 
 **O site está no ar em https://www.recepclinic.com.br.** **Todas as etapas (S0 a S6) concluídas e
-validadas.** A empresa (CNPJ MEI) foi **verificada pela Meta**, sem os dados da empresa no site (S-4).
+validadas.** A empresa (CNPJ MEI) foi **verificada pela Meta**; a pedido da Meta, o nome jurídico e o CNPJ passaram a aparecer no site em 09/out/2026 (S-4).
 
 **Não há próxima etapa do site.** A pendência **Tech Provider** segue na sessão do produto, usando
 deste site: política (`/privacidade`), termos (`/termos`), exclusão de dados
@@ -37,11 +37,11 @@ perguntar ao cliente o que deseja; só restam as pendências abaixo.
 | Item | Onde / como |
 |---|---|
 | Código | Astro 7 estático; `npm run dev`, `npm run check`, `npm run build`; CI no GitHub (`check` + `build`) |
-| Dados da empresa e contato | `src/config/site.ts` (WhatsApp `5561998645490`, `contato@recepclinic.com.br`; razão social e CNPJ vazios) |
+| Dados da empresa e contato | `src/config/site.ts` (WhatsApp `5561998645490`, `contato@recepclinic.com.br`; razão social `69.503.530 THIAGO LUIZ DE SOUSA`, CNPJ `69.503.530/0001-59`) |
 | Hospedagem | Cloudflare **Worker com arquivos estáticos** `recepclinic-site` (Workers Builds); **publica sozinho a cada push na `main`**; configuração em `wrangler.jsonc`; cabeçalhos em `public/_headers` |
 | Domínio | DNS na Cloudflare; `www.recepclinic.com.br` é o endereço oficial; `recepclinic.com.br` → `www` (Redirect Rule, 301); Always Use HTTPS ligado; `recepclinic-site.tluiz22.workers.dev` continua ativo |
 | E-mail | Email Routing: `contato@recepclinic.com.br` → `tluiz22projetos@gmail.com` (só recebe) |
-| Páginas legais | `/privacidade` (versão de 04/10/2026, com o Google Analytics) e `/termos` (03/10/2026), ambas "versão em revisão jurídica" |
+| Páginas legais | `/privacidade` e `/termos`, versão de 09/10/2026 (com o Google Analytics e a identificação da empresa), ambas "versão em revisão jurídica" |
 | Analytics | Google Analytics 4 `G-KE3HKJ7NK9` (`site.analytics.gaId` em `src/config/site.ts`), carregado **só depois do "Aceitar"** no aviso de cookies (`src/components/CookieConsent.astro`); "Preferências de cookies" no rodapé; domínios do Google liberados no CSP de `public/_headers` (S-8) |
 
 **Pendências fora das etapas** (nenhuma bloqueia a S6)
@@ -50,8 +50,7 @@ perguntar ao cliente o que deseja; só restam as pendências abaixo.
   revisada: atualizar o texto, a data (`updated`) e tirar o selo (`inReview={false}`) em
   `src/pages/privacidade.astro` e `src/pages/termos.astro`. Pontos deixados para o advogado: prazos
   de retenção, limite de responsabilidade, foro e a aplicação do Decreto 7.962/2013, e agora também
-  o aviso de cookies e o trecho do Google Analytics (S-8), e a identificação do controlador sem
-  razão social e CNPJ (S-4).
+  o aviso de cookies e o trecho do Google Analytics (S-8).
 - **Retenção do Google Analytics em 2 meses** (o que a política diz): conferir no GA em
   Administrador → Configurações de dados → Retenção de dados.
 - **A política descreve o produto no modelo alvo** (dados separados por clínica, D1; acesso do
@@ -66,7 +65,7 @@ perguntar ao cliente o que deseja; só restam as pendências abaixo.
 | S-1 | Onde fica | **Projeto separado** do produto (D7 ajustada): `www.recepclinic.com.br` = site; `app.recepclinic.com.br` = produto (este repositório) |
 | S-2 | Hospedagem | **Cloudflare Pages** (grátis, permite uso comercial, repositório privado), com o **DNS do domínio na Cloudflare**. Na criação (04/out/2026), a Cloudflare fez um **Worker com arquivos estáticos** (mesmo plano grátis); ver S5 |
 | S-3 | Páginas | **Início** (apresentação adaptada da proposta de valor) + **Política de privacidade** + **Termos de uso**; contato no Início e no rodapé |
-| S-4 | Empresa | ~~**CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente).~~ **Ajuste (06/out/2026):** o cliente abriu um **CNPJ MEI** para começar o piloto e migrar para ME ao faturar (alertado de que o MEI não cobre atividades de software e de que a troca de razão social na migração exige atualizar a verificação na Meta). Decidiu **não colocar razão social nem CNPJ no site** (a razão social do MEI traz o CPF), nem temporariamente; `legalName` e `cnpj` seguem vazios. Alertado de que a Meta pode pedir o nome legal no site e de que a política identifica o controlador só como "RecepClinic" (ponto para o advogado). ~~O site vai ao ar com espaço reservado~~ **Ajuste (04/out/2026):** até o CNPJ sair, o site **não mostra nada sobre a empresa** (só "© RecepClinic"; política e termos falam em "RecepClinic"). Ao preencher razão social e CNPJ em `src/config/site.ts`, entra "RecepClinic é uma marca de <razão social>, CNPJ <número>" no rodapé, na abertura da política e dos termos e no "Controlador" |
+| S-4 | Empresa | ~~**CNPJ em abertura** (SLU, ME, Simples Nacional; roteiro passado ao cliente).~~ **Ajuste (06/out/2026):** o cliente abriu um **CNPJ MEI** para começar o piloto e migrar para ME ao faturar (alertado de que o MEI não cobre atividades de software e de que a troca de razão social na migração exige atualizar a verificação na Meta). Decidiu **não colocar razão social nem CNPJ no site** (a razão social do MEI traz o CPF), nem temporariamente; `legalName` e `cnpj` seguem vazios. Alertado de que a Meta pode pedir o nome legal no site e de que a política identifica o controlador só como "RecepClinic" (ponto para o advogado). ~~O site vai ao ar com espaço reservado~~ **Ajuste (04/out/2026):** até o CNPJ sair, o site **não mostra nada sobre a empresa** (só "© RecepClinic"; política e termos falam em "RecepClinic"). Ao preencher razão social e CNPJ em `src/config/site.ts`, entra "RecepClinic é uma marca de <razão social>, CNPJ <número>" no rodapé, na abertura da política e dos termos e no "Controlador" **Ajuste (09/out/2026), para a verificação da Meta:** o site passa a mostrar o nome jurídico **exatamente como na Meta** (`69.503.530 THIAGO LUIZ DE SOUSA`, CNPJ `69.503.530/0001-59`) no rodapé, na abertura da política e dos termos e no "Controlador". A razão social do MEI traz a raiz do CNPJ, não o CPF. |
 | S-5 | Contato | **WhatsApp pessoal do cliente** + `contato@recepclinic.com.br` **redirecionado para o e-mail pessoal** (Email Routing da Cloudflare). **Sem formulário.** |
 | S-6 | Visual | O da **proposta de valor** (verde-petróleo, Bricolage Grotesque nos títulos, Source Sans no texto, claro e escuro); **logo provisório só com o nome** "RecepClinic" e ícone simples |
 | S-7 | Páginas legais | **Redigidas pelo Claude** a partir do que o sistema faz, publicadas como "versão em revisão"; **revisão de advogado antes do 1º piloto** |
@@ -227,5 +226,5 @@ perguntar ao cliente o que deseja; só restam as pendências abaixo.
 | Repositório criado, conta Cloudflare, DNS trocado | S0 | recebido |
 | Número de WhatsApp pessoal para o botão | S2 | recebido: (61) 99864-5490 |
 | E-mail pessoal de destino do `contato@` | S5 | recebido: `tluiz22projetos@gmail.com` |
-| Razão social e CNPJ | S6 | CNPJ MEI aberto; **não vai para o site** (decisão do cliente, 06/out/2026) |
+| Razão social e CNPJ | S6 | recebido: `69.503.530 THIAGO LUIZ DE SOUSA`, CNPJ `69.503.530/0001-59`; no site desde 09/out/2026 (S-4) |
 | Advogado para revisar as páginas legais | antes do 1º piloto | **pendente** |

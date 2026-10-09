@@ -19,10 +19,10 @@ export const site = {
   },
 
   company: {
-    // Preenchidos quando o CNPJ sair (S6). Enquanto legalName for null, o site não mostra nada
-    // sobre a empresa (decisão do cliente, 04/out/2026).
-    legalName: null as string | null,
-    cnpj: null as string | null,
+    // Nome jurídico exatamente como no cartão CNPJ e na verificação da Meta (S-4, 09/out/2026).
+    // Com legalName null, o site não mostra nada sobre a empresa.
+    legalName: '69.503.530 THIAGO LUIZ DE SOUSA' as string | null,
+    cnpj: '69.503.530/0001-59' as string | null,
   },
 };
 
