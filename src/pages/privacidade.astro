@@ -27,7 +27,7 @@ const toc = [
 <Legal
   title="Política de privacidade"
   description="Como o RecepClinic trata dados pessoais de visitantes do site, de usuários do painel e de pacientes e contatos das clínicas, conforme a LGPD."
-  updated="09/10/2026"
+  updated="10/10/2026"
   inReview={true}
   toc={toc}
 >
@@ -153,6 +153,13 @@ const toc = [
       </li>
       <li>dados técnicos de acesso, como endereço IP e data e hora de login.</li>
     </ul>
+    <p>
+      O sistema envia e-mails a essas pessoas, como convites de acesso, avisos de acesso, links para
+      criar ou redefinir a senha e pedidos de informações para configurar a clínica. Esses e-mails saem
+      do endereço <code>nao-responda@recepclinic.com.br</code> pelo nosso fornecedor de envio de e-mail
+      (Resend) e levam o nome e o e-mail de quem os recebe e o conteúdo da mensagem. Eles não contêm
+      dados de pacientes.
+    </p>
     <ul>
       <li>
         <strong>Para quê:</strong> dar acesso ao painel, controlar o que cada pessoa pode ver e fazer,
@@ -284,6 +291,11 @@ const toc = [
             <td>Cloudflare</td>
             <td>Hospedagem deste site, endereço na internet e encaminhamento de e-mail</td>
             <td>Dados técnicos de acesso e e-mails enviados a {email}</td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>Envio dos e-mails do sistema (convites, avisos de acesso, senha e pedidos de informações)</td>
+            <td>Nome e e-mail dos usuários do painel e o conteúdo desses e-mails</td>
           </tr>
           <tr>
             <td>Google (Google Analytics)</td>

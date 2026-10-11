@@ -41,7 +41,7 @@ perguntar ao cliente o que deseja; só restam as pendências abaixo.
 | Hospedagem | Cloudflare **Worker com arquivos estáticos** `recepclinic-site` (Workers Builds); **publica sozinho a cada push na `main`**; configuração em `wrangler.jsonc`; cabeçalhos em `public/_headers` |
 | Domínio | DNS na Cloudflare; `www.recepclinic.com.br` é o endereço oficial; `recepclinic.com.br` → `www` (Redirect Rule, 301); Always Use HTTPS ligado; `recepclinic-site.tluiz22.workers.dev` continua ativo |
 | E-mail | Email Routing: `contato@recepclinic.com.br` → `tluiz22projetos@gmail.com` (só recebe) |
-| Páginas legais | `/privacidade` e `/termos`, versão de 09/10/2026 (com o Google Analytics e a identificação da empresa), ambas "versão em revisão jurídica" |
+| Páginas legais | `/privacidade` (versão de 10/10/2026, com o Resend) e `/termos` (09/10/2026), com o Google Analytics e a identificação da empresa, ambas "versão em revisão jurídica" |
 | Analytics | Google Analytics 4 `G-KE3HKJ7NK9` (`site.analytics.gaId` em `src/config/site.ts`), carregado **só depois do "Aceitar"** no aviso de cookies (`src/components/CookieConsent.astro`); "Preferências de cookies" no rodapé; domínios do Google liberados no CSP de `public/_headers` (S-8) |
 
 **Pendências fora das etapas** (nenhuma bloqueia a S6)
@@ -50,7 +50,8 @@ perguntar ao cliente o que deseja; só restam as pendências abaixo.
   revisada: atualizar o texto, a data (`updated`) e tirar o selo (`inReview={false}`) em
   `src/pages/privacidade.astro` e `src/pages/termos.astro`. Pontos deixados para o advogado: prazos
   de retenção, limite de responsabilidade, foro e a aplicação do Decreto 7.962/2013, e agora também
-  o aviso de cookies e o trecho do Google Analytics (S-8).
+  o aviso de cookies e o trecho do Google Analytics (S-8), e o Resend (fornecedor de envio dos
+  e-mails do sistema à equipe das clínicas, incluído em 10/out/2026 a pedido da sessão do produto).
 - **Retenção do Google Analytics em 2 meses** (o que a política diz): conferir no GA em
   Administrador → Configurações de dados → Retenção de dados.
 - **A política descreve o produto no modelo alvo** (dados separados por clínica, D1; acesso do
