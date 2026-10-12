@@ -21,7 +21,7 @@
 > Meta (pendência registrada no plano do produto, a tratar **depois** do site) exigem um site no
 > domínio da empresa, com nome, contato e política de privacidade.
 
-## Situação atual (atualizada em 06/out/2026)
+## Situação atual (atualizada em 12/out/2026)
 
 **O site está no ar em https://www.recepclinic.com.br.** **Todas as etapas (S0 a S6) concluídas e
 validadas.** A empresa (CNPJ MEI) foi **verificada pela Meta**; a pedido da Meta, o nome jurídico e o CNPJ passaram a aparecer no site em 09/out/2026 (S-4).
@@ -31,6 +31,17 @@ deste site: política (`/privacidade`), termos (`/termos`), exclusão de dados
 (`/privacidade#exclusao`) e o ícone do app `https://www.recepclinic.com.br/app-icon.png` (1024×1024,
 modelo "calendário com check" escolhido pelo cliente; o logo do site continua o balão). Ao retomar,
 perguntar ao cliente o que deseja; só restam as pendências abaixo.
+
+**Proposta aguardando resposta do cliente (07/out/2026): visibilidade e captação.** Quatro frentes,
+na ordem recomendada, cada uma virando etapa só com a aprovação do cliente:
+(1) **S7 — medição e Google** (recomendada para começar): Search Console e Bing Webmaster (verificação
+pelo DNS), cliques no WhatsApp e no e-mail como conversões no GA, dados estruturados;
+(2) conversão no site: perguntas frequentes, mensagens de WhatsApp por botão, vídeo ou animação e,
+depois do piloto, depoimento ou caso real (com autorização);
+(3) atração pelo Google: páginas por especialidade, calculadora de perdas com faltas, artigos;
+(4) fora do site, com o cliente: prospecção, parcerias (contadores de clínicas, sistemas de
+prontuário, associações), indicação, redes sociais e, só com as conversões medidas, Google Ads.
+Respeita as decisões atuais (sem preço, sem formulário, sem citar a Dra. Ana Karina sem autorização).
 
 **Como o site funciona hoje**
 
