@@ -1,5 +1,5 @@
 ---
-import { site, companyIdentity, whatsappUrl } from '../config/site';
+import { site, whatsappUrl } from '../config/site';
 
 const year = new Date().getFullYear();
 ---
@@ -39,7 +39,6 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="container company">
-    {companyIdentity && <p class="muted">{site.name} é uma marca de {companyIdentity}</p>}
     <p class="muted">© {year} {site.name}</p>
   </div>
 </footer>
